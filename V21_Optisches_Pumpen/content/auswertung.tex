@@ -1,6 +1,98 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsicherheiten mit dem Modul \glqq Uncertainties" \cite{uncertainties}, die Ausgleichsrechnungen mit dem Modul \glqq Scipy" \cite{scipy} durchgeführt und die grafischen Darstellungen über das Modul \glqq Matplotlib" \cite{matplotlib} erstellt.
+
+
+
+\subsection{Vertikales B-Feld}
+
+Um die vertikale Komponente des Erdmagnetfeldes zu kompensieren, wird dem ein Gegenfeld einer Flussdichte von $B_v=\SI{35.25}{\mu\tesla}$ entgegengesetzt.
+
+
+\subsection{B-Feld-Resonanzen}
+Die Messung erfolgt gemäß dem in der Durchführung beschriebenen Ablauf. Die jeweiligen Resonanz-Positionen werden über Drehung des Potenziometers erreicht. 
+Aus der Anzahl der Drehungen lässt sich der jeweils geflossene Strom bestimmen. 
+Dabei entpricht eine Umdrehung für die Sweep- und Vertilalfeld-Spulen einen Strom von $I=\SI{0.1}{\ampere}$ und für die Horizontalfeld-Spule einen Strom von $I=\SI{0.3}{\ampere}$. 
+Aus den Strömen lassen sich die von den Helmholtzspulenpaaren erzeugten Magnetfelder über
+\begin{equation}
+    B_{\text{Helmholtz}} = \frac{8}{\sqrt{125}}\frac{\mu_0 N I}{R}
+\end{equation}
+berechnen. Die Summe aus Sweep- und Horizontalfeld ergibt die gesamte magnetische Flussdichte.
+Die Ströme und die Flussdichten der Resonanzen sind der Tabelle \ref{tab:Resonanz} zu entnehmen. 
+
+\begin{table}
+    \centering
+    \caption{}
+    \label{tab:Resonanz}
+    \sisetup{table-format = 1.2}
+    \begin{tabular}[h]{S | S S S| S S S|} 
+        \toprule
+        & \multicolumn{3}{c}{$^{87}$Rb} & \multicolumn{3}{c}{$^{85}$Rb} \\
+        \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+        $f \mathbin{/} \si{\kilo\hertz}$ & $I_{Sweep} \mathbin{/} \si{\ampere}$ & $I_{Hori.} \mathbin{/} \si{\ampere}$ & $B_{Summe} \mathbin{/} \si{\micro\tesla}$ & $I_{Sweep} \mathbin{/} \si{\ampere}$ & $I_{Hori.} \mathbin{/} \si{\ampere}$ & $B_{Summe} \mathbin{/} \si{\micro\tesla}$ \\
+        \midrule
+        100     &    0.65 &  0.77  &   39.23   &  0.00 &  0.00  &  46.35    \\
+        200     &    0.43 &  0.67  &   52.14   &  0.03 &  0.03  &  66.44    \\
+        300     &    0.67 &  1.02  &   66.50   &  0.03 &  0.03  &  87.68    \\
+        400     &    0.54 &  0.97  &   85.21   &  0.06 &  0.06  & 111.40    \\
+        500     &    0.34 &  0.90  &   99.45   &  0.09 &  0.09  & 133.24    \\
+        600     &    0.13 &  0.84  &  113.08   &  0.12 &  0.12  & 155.99    \\
+        700     &    0.20 &  1.03  &  122.69   &  0.13 &  0.13  & 172.60    \\
+        800     &    0.25 &  1.02  &  141.31   &  0.14 &  0.16  & 198.12    \\
+        900     &    0.31 &  0.84  &  155.39   &  0.16 &  0.19  & 219.13    \\
+        1000    &    0.16 &  0.82  &  167.21   &  0.18 &  0.22  & 238.91    \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+An den Resonanzen muss der Zusammenhang aus Gleichung REF gelten.
+Dieser lässt sich unter Berücksichtigung eines Untergrundfeldes zu einer Geradengleichung der Form 
+\begin{equation}
+    \label{eq:B}
+    B(f) = \underbrace{\frac{h}{\mu_B g_F}}_{=a}f + b
+\end{equation}
+umstellen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{build/B_Felder.pdf}
+    \caption{Gemessene B-Felder der Resonanzen in Abhängigkeit der jeweiligen RF-Feld-Frequenzen für beide Rb-Isotope. Anhand der Messwerte lassen sich Ausgleichsgeraden berechnen.}
+    \label{fig:Resonanz}
+\end{figure}
+
+In grafischer Darstellung (Abbildung \ref{fig:Resonanz}) lässt sich dieser lineare Zusammenhang zwischen der magnetischen Flussdichte und der Frequenz des RF-Feldes erkennen.
+Es lässt sich eine Ausgleichsrechnung der Geraden aus Gleichung \eqref{eq:B} durchführen.
+Die Ergebnisse dieser Rechnung ergeben sich für $^{87}$Rb zu  
+\begin{align*}
+    a_{87} = & \SI{0.1439(23)}{\micro\tesla\per\kilo\hertz} \\
+    b_{87} = &\SI{25.1(14)}{\micro\tesla} 
+\end{align*}
+und für $^{85}$Rb zu
+\begin{align*}
+    a_{85} =& \SI{0.2158(18)}{\micro\tesla\per\kilo\hertz} \\
+    b_{85} =&  \SI{24.3(11)}{\micro\tesla}.
+\end{align*}
+Der konstante Untergrund lässt sich hauptsächlich auf die verbleibende horizontalkomponente des Erdmagnetfeldes zurückführen. 
+
+
+
+Aus den Steigungen der Ausgleichsgeraden lässt sich der jeweilige g-Faktor bestimmen.
+Dazu wird die Steigung $a$ aus Gleichung \eqref{eq:B} nach dem g-Faktor $g_F$ umgeformt.
+So lässt sich über
+\begin{equation}
+    g_F = \frac{h}{\mu_B a}
+\end{equation}
+der g-Faktor für $^{87}$Rb zu 
+\begin{align*}
+    g_F = \num{0.496(8)}
+\end{align*}
+und für $^{85}$Rb zu 
+\begin{align*}
+    g_F=\num{0.3311(27)}
+\end{align*}
+bestimmen.
+
+
+
 %Messwerte: Alle gemessenen physikalischen Größen sind übersichtlich darzustellen.
 %
 %Auswertung:

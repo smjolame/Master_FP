@@ -1,3 +1,4 @@
+from cgi import print_form
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.constants as const
@@ -57,7 +58,10 @@ bruchteile_period2 = np.array([1,2,3,4,5,7,8,8,9,10,10,8,10,8])
 I_s1 , I_s2 = b_s1*0.1 , b_s2*0.1
 I_h1 , I_h2 = b_h1*0.3 , b_h2*0.3
 
+I_data = np.array([I_s1,I_s2,I_h1,I_h2]).T
 
+
+np.savetxt('build/Data_Strom.txt', I_data,'%6.2f')
 
 T1 = T1/bruchteile_period1 
 T2 = T2/bruchteile_period2 
@@ -78,55 +82,62 @@ B_h2 = B_helmholtz(N_h,R_h,I_h2)
 
 B_1 = (B_s1+B_h1)#T
 B_2 = (B_s2+B_h2)#T
+np.savetxt('build/Data_B_Felder.txt',np.array([B_1,B_2]).T*10**6,'%6.2f')
 
 B_v = B_helmholtz(N_v,R_v,2.3*0.1)#T
+print('B_v=', B_v*10**6,'muT')
 
-#Test-Plots
 
-plt.plot(f,B_1, 'x')
-plt.plot(f,B_2, 'x')
-plt.grid()
-plt.show()
-plt.clf()
-plt.plot(U1,T1,'x')
-plt.plot(U2,T2,'x')
-plt.grid()
-plt.show()
-plt.clf()
 
+#Bestimmung des g Faktors und des Erdmagnetfeldes
 def Fit_Gerade (x,a,b):
     return a*x+b
 
-f_lin = np.linspace(0,1100000,1000)
+f_lin = np.linspace(0,1100,1000) #kHz
 
 params, cov = curve_fit(Fit_Gerade, f,B_1 ,p0=[1,1])
-a1 = ufloat(params[0],np.absolute(cov[0][0])**0.5)
-b1 = ufloat(params[1],np.absolute(cov[1][1])**0.5)
+a1_ = ufloat(params[0],np.absolute(cov[0][0])**0.5)
+b1_ = ufloat(params[1],np.absolute(cov[1][1])**0.5)
 
 params, cov = curve_fit(Fit_Gerade, f,B_2 ,p0=[1,1])
-a2 = ufloat(params[0],np.absolute(cov[0][0])**0.5)
-b2 = ufloat(params[1],np.absolute(cov[1][1])**0.5)
+a2_ = ufloat(params[0],np.absolute(cov[0][0])**0.5)
+b2_ = ufloat(params[1],np.absolute(cov[1][1])**0.5)
+
+a1=a1_*10**9 #muT/kHz
+b1=b1_*10**6 #muT
+a2=a2_*10**9 #muT/kHz
+b2=b2_*10**6 #muT
 
 
-plt.plot(f,B_1, 'x')
-plt.plot(f_lin, Fit_Gerade(f_lin,a1.n,b1.n))
-plt.plot(f,B_2, 'x')
-plt.plot(f_lin, Fit_Gerade(f_lin,a2.n,b2.n))
-plt.grid()
-plt.show()
-plt.clf()
+print('a1=',a1,'muT/kHz')
+print('b1=',b1,'muT')
+print('a2=',a2,'muT/kHz')
+print('b2=',b2,'muT')
+
+#plt.plot(f*10**(-3),B_1*10**(6), 'x', label=r'Messwerte $^{87}$Rb')
+#plt.plot(f_lin, Fit_Gerade(f_lin,a1.n,b1.n), label=r'Ausgleichsgerade $^{87}$Rb')
+#plt.plot(f*10**(-3),B_2*10**(6), 'x', label=r'Messwerte $^{85}$Rb')
+#plt.plot(f_lin, Fit_Gerade(f_lin,a2.n,b2.n), label=r'Ausgleichsgerade $^{85}$Rb')
+#plt.xlabel(r'$f \mathbin{/} \si{\kilo\hertz}$')
+#plt.ylabel(r'$B \mathbin{/} \si{\micro\tesla}$')
+#plt.legend()
+#plt.grid()
+#plt.savefig('build/B_Felder.pdf')
+#plt.clf()
 
 #g-Faktoren
 def g_faktor(a):
     return h/(mu_B*a)
 
-g1 = g_faktor(a1)
-g2 = g_faktor(a2)
+g1 = g_faktor(a1_)
+g2 = g_faktor(a2_)
 
-print(g1,g2)
+print('g1=',g1)
+print('g2=',g2)
 
 #Erdmagnetfeld
-print(b1,b2)
+print('b1=',b1,' muT')
+print('b2=',b2,' muT')
 
 #Kernspins:
 def I(g_F):
@@ -135,7 +146,8 @@ def I(g_F):
 I1 = I(g1)
 I2 = I(g2)
 
-print(I1,I2)
+print('I1=',I1)
+print('I2=',I2)
 
 
 #Isotopenverhältnis
@@ -153,10 +165,11 @@ E_Hyper_2 = 2.01*10**(-24) #J
 del_E1 = delta_E(B_1[-1],g1,2,E_Hyper_1)
 del_E2 = delta_E(B_2[-1],g2,3,E_Hyper_2)
 
-del_E1_eV = del_E1/eV
-del_E2_eV = del_E2/eV
+del_E1_eV = del_E1/eV*10**9
+del_E2_eV = del_E2/eV*10**9
 
-print(del_E1_eV, del_E2_eV)
+print('del_E1_eV=',del_E1_eV,'neV')
+print('del_E2_eV=',del_E2_eV,'neV')
 
 
 ######################
@@ -186,15 +199,18 @@ c_e2 = ufloat(params_exp2[2],np.absolute(cov_exp2[2][2])**0.5)
 
 
 
-t_lin1 = np.linspace(t1[0],t1[-1],1000)
-plt.plot(t_lin1, expo(t_lin1, A_e1.n, b_e1.n, c_e1.n))
-plt.plot(t1,data1,'x')
-t_lin2 = np.linspace(t2[0],t2[-1],1000)
-plt.plot(t_lin2, expo(t_lin2, A_e2.n, b_e2.n, c_e2.n))
-plt.plot(t2,data2,'x')
-plt.grid()
-plt.show()
-plt.clf()
+#t_lin1 = np.linspace(t1[0],t1[-1],1000)
+#plt.plot(t_lin1, expo(t_lin1, A_e1.n, b_e1.n, c_e1.n), label='Exponentieller Fit $^{87}$Rb')
+#plt.plot(t1,data1,'x', label='Messwerte $^{87}$Rb')
+#t_lin2 = np.linspace(t2[0],t2[-1],1000)
+#plt.plot(t_lin2, expo(t_lin2, A_e2.n, b_e2.n, c_e2.n), label='Exponentieller Fit $^{85}$Rb')
+#plt.plot(t2,data2,'x', label='Messwerte $^{85}$Rb')
+#plt.grid()
+#plt.xlabel(r'$t \mathbin{/} \si{\milli\s}$')
+#plt.ylabel(r'$B \mathbin{/} \text{a.u.}$')
+#plt.legend()
+#plt.savefig('build/Expo.pdf')
+#plt.clf()
 
 
 #Periodendauern
@@ -215,13 +231,16 @@ b_p2 = ufloat(params_period2[1],np.absolute(cov_period2[1][1])**0.5)
 c_p2 = ufloat(params_period2[2],np.absolute(cov_period2[2][2])**0.5)
 
 
-U_lin1 = np.linspace(U1[0],U1[-1],1000)
-plt.plot(U1,T1,'x')
-plt.plot(U_lin1,hyper(U_lin1,a_p1.n,b_p1.n,c_p1.n))
-U_lin2 = np.linspace(U2[0],U2[-1],1000)
-plt.plot(U2,T2,'x')
-plt.plot(U_lin2,hyper(U_lin2,a_p2.n,b_p2.n,c_p2.n))
-plt.grid()
-plt.show()
-print(a_p1, b_p1, c_p1)
-print(a_p2, b_p2, c_p2)
+#U_lin1 = np.linspace(U1[0],U1[-1],1000)
+#plt.plot(U1,T1,'x', label='Messwerte Periodendauer $^{87}$Rb')
+#plt.plot(U_lin1,hyper(U_lin1,a_p1.n,b_p1.n,c_p1.n), label='Hyperbolischer Fit $^{87}$Rb')
+#U_lin2 = np.linspace(U2[0],U2[-1],1000)
+#plt.plot(U2,T2,'x', label='Messwerte Periodendauer $^{85}$Rb')
+#plt.plot(U_lin2,hyper(U_lin2,a_p2.n,b_p2.n,c_p2.n), label='Hyperbolischer Fit $^{85}$Rb')
+#plt.grid()
+#plt.xlabel(r'$\text{Amplitude} \mathbin{/} \si{\V}$')
+#plt.ylabel(r'$T \mathbin{/} \si{\milli\s}$')
+#plt.legend()
+#plt.savefig('build/Perioden.pdf')
+#print(a_p1, b_p1, c_p1)
+#print(a_p2, b_p2, c_p2)
