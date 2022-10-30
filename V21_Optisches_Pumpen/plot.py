@@ -114,16 +114,16 @@ print('b1=',b1,'muT')
 print('a2=',a2,'muT/kHz')
 print('b2=',b2,'muT')
 
-#plt.plot(f*10**(-3),B_1*10**(6), 'x', label=r'Messwerte $^{87}$Rb')
-#plt.plot(f_lin, Fit_Gerade(f_lin,a1.n,b1.n), label=r'Ausgleichsgerade $^{87}$Rb')
-#plt.plot(f*10**(-3),B_2*10**(6), 'x', label=r'Messwerte $^{85}$Rb')
-#plt.plot(f_lin, Fit_Gerade(f_lin,a2.n,b2.n), label=r'Ausgleichsgerade $^{85}$Rb')
-#plt.xlabel(r'$f \mathbin{/} \si{\kilo\hertz}$')
-#plt.ylabel(r'$B \mathbin{/} \si{\micro\tesla}$')
-#plt.legend()
-#plt.grid()
-#plt.savefig('build/B_Felder.pdf')
-#plt.clf()
+plt.plot(f*10**(-3),B_1*10**(6), '+', label=r'Messwerte $^{87}$Rb')
+plt.plot(f_lin, Fit_Gerade(f_lin,a1.n,b1.n), '--' ,label=r'Ausgleichsgerade $^{87}$Rb')
+plt.plot(f*10**(-3),B_2*10**(6), 'x', label=r'Messwerte $^{85}$Rb')
+plt.plot(f_lin, Fit_Gerade(f_lin,a2.n,b2.n), label=r'Ausgleichsgerade $^{85}$Rb')
+plt.xlabel(r'$f \mathbin{/} \si{\kilo\hertz}$')
+plt.ylabel(r'$B \mathbin{/} \si{\micro\tesla}$')
+plt.legend()
+plt.grid()
+plt.savefig('build/B_Felder.pdf')
+plt.clf()
 
 #g-Faktoren
 def g_faktor(a):
@@ -167,7 +167,8 @@ del_E2 = delta_E(B_2[-1],g2,3,E_Hyper_2)
 
 del_E1_eV = del_E1/eV*10**9
 del_E2_eV = del_E2/eV*10**9
-
+print('B_del1=',B_1[-1]*10**6,'muT')
+print('B_del2=',B_1[-2]*10**6,'muT')
 print('del_E1_eV=',del_E1_eV,'neV')
 print('del_E2_eV=',del_E2_eV,'neV')
 
@@ -187,6 +188,8 @@ data2 = np.cumsum(data2_)
 t1 = t1_*25/20 #ms
 t2 = t2_*25/20 #ms
 
+np.savetxt('build/expo.txt', np.array([t1,data1,data2]).T,'%3.2f')
+
 params_exp1, cov_exp1 = curve_fit(expo,t1, data1, p0=[0,0,-1])
 A_e1 = ufloat(params_exp1[0],np.absolute(cov_exp1[0][0])**0.5)
 b_e1 = ufloat(params_exp1[1],np.absolute(cov_exp1[1][1])**0.5)
@@ -199,25 +202,25 @@ c_e2 = ufloat(params_exp2[2],np.absolute(cov_exp2[2][2])**0.5)
 
 
 
-#t_lin1 = np.linspace(t1[0],t1[-1],1000)
-#plt.plot(t_lin1, expo(t_lin1, A_e1.n, b_e1.n, c_e1.n), label='Exponentieller Fit $^{87}$Rb')
-#plt.plot(t1,data1,'x', label='Messwerte $^{87}$Rb')
-#t_lin2 = np.linspace(t2[0],t2[-1],1000)
-#plt.plot(t_lin2, expo(t_lin2, A_e2.n, b_e2.n, c_e2.n), label='Exponentieller Fit $^{85}$Rb')
-#plt.plot(t2,data2,'x', label='Messwerte $^{85}$Rb')
-#plt.grid()
-#plt.xlabel(r'$t \mathbin{/} \si{\milli\s}$')
-#plt.ylabel(r'$B \mathbin{/} \text{a.u.}$')
-#plt.legend()
-#plt.savefig('build/Expo.pdf')
-#plt.clf()
+t_lin1 = np.linspace(t1[0],t1[-1],1000)
+plt.plot(t1,data1,'+', label='Messwerte $^{87}$Rb')
+plt.plot(t_lin1, expo(t_lin1, A_e1.n, b_e1.n, c_e1.n),'--' ,label='Exponentieller Fit $^{87}$Rb')
+t_lin2 = np.linspace(t2[0],t2[-1],1000)
+plt.plot(t2,data2,'x', label='Messwerte $^{85}$Rb')
+plt.plot(t_lin2, expo(t_lin2, A_e2.n, b_e2.n, c_e2.n), label='Exponentieller Fit $^{85}$Rb')
+plt.grid()
+plt.xlabel(r'$t \mathbin{/} \si{\milli\s}$')
+plt.ylabel(r'$U \mathbin{/} \text{a.u.}$')
+plt.legend()
+plt.savefig('build/Expo.pdf')
+plt.clf()
 
 
 #Periodendauern
 
 #Hyperbolische Fitfunktion:
-def hyper(T,a,b,c):
-    return a+b/(T-c)
+def hyper(U,a,b,c):
+    return a+b/(U-c)
 
 params_period1, cov_period1 = curve_fit(hyper,U1, T1, p0=[0,3,0])
 a_p1 = ufloat(params_period1[0],np.absolute(cov_period1[0][0])**0.5)
@@ -230,17 +233,19 @@ a_p2 = ufloat(params_period2[0],np.absolute(cov_period2[0][0])**0.5)
 b_p2 = ufloat(params_period2[1],np.absolute(cov_period2[1][1])**0.5)
 c_p2 = ufloat(params_period2[2],np.absolute(cov_period2[2][2])**0.5)
 
+np.savetxt('build/period.txt', np.array([U1,T1,T2]).T,'%3.2f')
+print(a_p1,b_p1,c_p1,a_p2,b_p2,c_p2, b_p2/b_p1)
 
-#U_lin1 = np.linspace(U1[0],U1[-1],1000)
-#plt.plot(U1,T1,'x', label='Messwerte Periodendauer $^{87}$Rb')
-#plt.plot(U_lin1,hyper(U_lin1,a_p1.n,b_p1.n,c_p1.n), label='Hyperbolischer Fit $^{87}$Rb')
-#U_lin2 = np.linspace(U2[0],U2[-1],1000)
-#plt.plot(U2,T2,'x', label='Messwerte Periodendauer $^{85}$Rb')
-#plt.plot(U_lin2,hyper(U_lin2,a_p2.n,b_p2.n,c_p2.n), label='Hyperbolischer Fit $^{85}$Rb')
-#plt.grid()
-#plt.xlabel(r'$\text{Amplitude} \mathbin{/} \si{\V}$')
-#plt.ylabel(r'$T \mathbin{/} \si{\milli\s}$')
-#plt.legend()
-#plt.savefig('build/Perioden.pdf')
-#print(a_p1, b_p1, c_p1)
-#print(a_p2, b_p2, c_p2)
+U_lin1 = np.linspace(U1[0],U1[-1],1000)
+plt.plot(U1,T1,'+', label='Messwerte Periodendauer $^{87}$Rb')
+plt.plot(U_lin1,hyper(U_lin1,a_p1.n,b_p1.n,c_p1.n),'--',label='Hyperbolischer Fit $^{87}$Rb')
+U_lin2 = np.linspace(U2[0],U2[-1],1000)
+plt.plot(U2,T2,'x', label='Messwerte Periodendauer $^{85}$Rb')
+plt.plot(U_lin2,hyper(U_lin2,a_p2.n,b_p2.n,c_p2.n), label='Hyperbolischer Fit $^{85}$Rb')
+plt.grid()
+plt.xlabel(r'$\text{Amplitude} \mathbin{/} \si{\V}$')
+plt.ylabel(r'$T \mathbin{/} \si{\milli\s}$')
+plt.legend()
+plt.savefig('build/Perioden.pdf')
+print(a_p1, b_p1, c_p1)
+print(a_p2, b_p2, c_p2)
