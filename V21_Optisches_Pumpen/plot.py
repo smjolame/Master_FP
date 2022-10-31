@@ -44,7 +44,7 @@ N_v = 20
 
 #Konvention: Rb87 = 1, Rb85 = 2 
 
-#Daten imortieren:
+#Daten importieren:
 f_kilo, b_s1, b_s2, b_h1, b_h2 = np.genfromtxt('data/B_felder.csv', delimiter=',', unpack=True)
 U1, T1 = np.genfromtxt('data/Periodendauern1.csv', delimiter=',', unpack=True)
 U2, T2 = np.genfromtxt('data/Periodendauern2.csv', delimiter=',', unpack=True)
@@ -249,3 +249,21 @@ plt.legend()
 plt.savefig('build/Perioden.pdf')
 print(a_p1, b_p1, c_p1)
 print(a_p2, b_p2, c_p2)
+
+
+####dikussion
+#Erdmagnetfeld
+
+B_erde_hori = 19.3449 #muT
+B_erde_verti = 45.2309 #muT
+abw_B_erde_hori1 = abw(B_erde_hori,b1)
+abw_B_erde_hori2 = abw(B_erde_hori,b2)
+abw_B_erde_verti = abw(B_erde_verti,B_v*10**6)
+
+print(abw_B_erde_hori1,abw_B_erde_hori2)
+print(abw_B_erde_verti)
+
+
+#periodendauern
+abw_period = abw(1.5, b_p2/b_p1)
+print(abw_period)
