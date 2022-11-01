@@ -9,6 +9,16 @@ from uncertainties.unumpy import uarray
 from uncertainties import unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms,std_devs as stds)
 from scipy.stats import sem
+import matplotlib as mpl
+
+mpl.use('pgf')
+mpl.rcParams.update({
+'font.family': 'serif',
+'text.usetex': True,
+'pgf.rcfonts': False,
+'pgf.texsystem': 'lualatex',
+'pgf.preamble': r'\usepackage{unicode-math}\usepackage{siunitx}',
+})
 
 from scipy.constants import mu_0 , h , elementary_charge , electron_mass, hbar , eV
 
