@@ -3,10 +3,19 @@
 
 
 \subsection{Halbleiter}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\textwidth]{Bilder/Metall_Iso_Halb.PNG}
+    \caption{Schematische Darstellung der jeweiligen Bandstrucktur von Metallen, Halbleitern und Isolatoren.}
+    \label{fig:band}
+\end{figure}
+
+
 Atome können sich über kovalente Bindungen zu Kristallen ordnen.
 Aufgrund der hohen Anzahl an Atomen und deren gegenseitiger Wechselwirkung spalten sich die ursprünglich diskreten Energiezustände in sogenannte Bänder auf.
 Je nach Größe und Position der Bandlücke lassen sich drei Arten von Materialien unterscheiden.
-In Abbildung REF sind die Bandschemata von Leitern, Halbleitern und Isolatoren dargestellt.
+In Abbildung \ref{fig:band} sind die Bandschemata von Leitern, Halbleitern und Isolatoren dargestellt.
 Die Energiezustände des niedrigeren Bandes (Valenzband) sind bei einer Temperatur $T=\SI{0}{\kelvin}$ vollständig bis zur Fermienergie gefüllt.
 Diese Valenzelektronen, welche signifikant von dem Gitterpotential beeinflusst werden, dienen den kovalenten Bindungen zwischen den Atomen. 
 Abgesehen von dem Leiter sind die Zustände des nächst höheren Bandes (Leitungsband) unbesetzt. 
@@ -23,9 +32,16 @@ Diese Zufuhr wird Dotierung genannt.
 Dabei können Atome verwendet werden, die nach vollständiger Bindung im Gitter, ein Elektron spendieren (Donator) oder selbst binden (Akzeptor). 
 Ein Halbleiter, der mit Donatoren dotiert ist, wird als n-dotiert bezeichnet und ein Halbleiter, der mit Akzeptoren dotiert ist, wird p-dotiert genannt.
 Über diese Veränderung der Ladungsträgerdichte lässt sich die Größe der Bandlücke manipulieren. 
-In Abbildung REF sind die jeiweligen Bandlücken dargestellt.
-Es sind nun auch bei einer Temperatur von $T=\SI{0}{\kelvin}$ Zustände im Leitungsband besetzt sein.
+In Abbildung \ref{fig:ak_don} sind die jeweiligen Bandlücken dargestellt.
+Es sind nun auch bei einer Temperatur von $T=\SI{0}{\kelvin}$ Zustände im Leitungsband besetzt.
 
+\begin{figure}[!ht]
+    \centering
+    \subfloat[][Bandlücke eines n-dotierten Halbleiters.]{\includegraphics[width=.5\textwidth]{Bilder/Akzeptor.PNG}} 
+    \subfloat[][Bandlücke eines n-dotierten Halbleiters.]{\includegraphics[width=.5\textwidth]{Bilder/Donator.PNG}}
+    \caption{Darstellung der Bandlücken bei jeweiliger Zufuhr von Akzeptoren oder Donatoren.}
+    \label{fig:ak_don}
+\end{figure}
 
 
 \subsection{Effektive Masse}
@@ -43,11 +59,19 @@ Bei Kristallen hoher Symmetrie, wie es zum Beispiel bei dem im Versuch verwendet
 
 
 
-
-
 \subsection{Doppelbrechung}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\textwidth]{Bilder/Farad_Rot.PNG}
+    \caption{Veranschaulichung der zirkularen Doppelbrechung bzw. der magnetfeldinduzierten Faraday Rotation. Die Polarisationsebene einer linear polarisierte Lichtwelle wird in einem Medium gedreht. \cite{V46}}
+    \label{fig:farad_rot}
+\end{figure}
+
+
+
 \label{sub:doppel}
-Optisch aktive Medien können aufgrund ihrer doppelbrechenden Eigenschaften die Polarisationsebene von linear polarisierten Licht um einen Winkel $\Theta$ drehen (siehe Abbildung REF).
+Optisch aktive Medien können aufgrund ihrer doppelbrechenden Eigenschaften die Polarisationsebene von linear polarisierten Licht um einen Winkel $\Theta$ drehen (siehe Abbildung \ref{fig:farad_rot}).
 Jedes linear polarisierte Licht lässt sich als Superposition aus zwei jeweils entegengesetzt zirkular polarisierten Lichtwellen auffassen:
 \begin{equation*}
     E(z) = \frac{1}{2} (E_R(z)+E_L(z)).
