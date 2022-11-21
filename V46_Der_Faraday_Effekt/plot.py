@@ -9,9 +9,18 @@ from uncertainties import unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms,std_devs as stds)
 from scipy.stats import sem
 
-def abw(exact,approx):
-    return (exact-approx)*100/exact  #Abweichnung
+l, phi1, phi2 = np.genfromtxt("data/hochrein.txt", unpack= True)
+l, phi1_136, phi2_136 = np.genfromtxt("data/136.txt", unpack= True)
+l, phi1_1296, phi2_1296 = np.genfromtxt("data/hochrein.txt", unpack= True)
 
+phi = np.abs(phi1 - phi2)/2
+phi136 = np.abs(phi1_136 - phi2_136) / 2
+phi1296 = np.abs(phi1_1296 - phi2_1296) / 2
+
+plt.plot(l**2, phi)
+plt.plot(l**2, phi136-phi)
+plt.plot(l**2, phi1296-phi)
+plt.savefig("build/plot.pdf")
 
 ##Curvefit
 #def BeispielFunktion(x,a,b):
