@@ -1,10 +1,65 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsicherheiten mit dem Modul \glqq Uncertainties" \cite{uncertainties}, die Ausgleichsrechnungen mit dem Modul \glqq Scipy" \cite{scipy} durchgeführt und die grafischen Darstellungen über das Modul \glqq Matplotlib" \cite{matplotlib} erstellt.
-%Messwerte: Alle gemessenen physikalischen Größen sind übersichtlich darzustellen.
-%
-%Auswertung:
-%Berechnung der geforderten Endergebnisse
-%mit allen Zwischenrechnungen und Fehlerformeln, sodass die Rechnung nachvollziehbar ist.
-%Eine kurze Erläuterung der Rechnungen (z.B. verwendete Programme)
-%Graphische Darstellung der Ergebnisse
+\subsection{Bestimmung der effektiven Masse}
+\noindent Wie in dem Abschnitt \ref{subsec:Durchfuehrung} beschrieben,
+werden für alle Proben zwei Winkel aufgenommen.
+Mit diesen wird die Differenz gebildet 
+und durch die Dicke $d$ der Probe geteilt:
+\begin{equation*}
+    \Theta = \frac{\phi_1 - \phi_2}{2 d}
+\end{equation*}
+\noindent mit
+\begin{equation*}
+    d_\text{hochrein} = \qty{5.11}{\mm} ,
+    \quad  d_{N=1,2 \cdot 10^{18}}= \qty{1.36}{\mm},
+    \quad   d_{N=2,8 \cdot 10^{18}}= \qty{1.296}{\mm}.
+\end{equation*}
+
+\noindent $\Theta$ wird gegen $\lambda^2$ geplottet (siehe Abbildung \ref{plot1}).
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{build/plot1.pdf}
+    \caption{Die Differenz $\Theta$ geplottet gegen das Wellenlängenquadrat $\lambda^2$
+    für die hochreine Probe und die n-dortierten Proben 
+    ($N = 1,2 \cdot 10^{18} \si{\per\cubic\cm}$ und $N = 2,8 \cdot 10^{18} \si{\per\cubic\cm}$).}
+    \label{plot1}
+\end{figure}
+
+\FloatBarrier
+\noindent Von den Differenzen für die n-dortierten Proben wird $\Theta_\text{hochrein}$ abgezogen
+und die Messreihen mit 
+\begin{equation}
+    \label{ausgleich}
+    \Theta = a \lambda^2
+\end{equation}
+
+\noindent gefittet (siehe Abbildung \ref{plot2}):
+\begin{equation*}
+    a_{N=1,2 \cdot 10^{18}} = (3,0 \pm 0,7)\cdot 10^{14} \si{\per\cubic\meter}
+\end{equation*}
+\begin{equation*}
+    a_{N=2,8 \cdot 10^{18}} = (4,5 \pm 0,7)\cdot 10^{14} \si{\per\cubic\meter}
+\end{equation*}
+\FloatBarrier
+
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{build/plot2.pdf}
+    \caption{Die Differenz $\Theta$ geplottet gegen das Wellenlängenquadrat $\lambda^2$
+    für die n-dortierten Proben mit $\Theta_\text{hochrein}$ korregiert
+    und die dazugehörigen Ausgleichsrechnungen.}
+    \label{plot2}
+\end{figure}
+
+\noindent Aus \eqref{ausgleich} und \eqref{theta} folgt für die effektive Masse
+\begin{equation}
+    m^* = \sqrt{\frac{e^3_0 \cdot N \cdot B}{8 \pi^2 \epsilon_0 c^3 n \cdot a}}
+\end{equation}
+\noindent mit $B= \qty{406}{\milli \tesla }$ und $n= 3,57$ \cite{Galliumarsenid_n}:
+\begin{equation*}
+    m^*_{N=1,2 \cdot 10^{18}} = (1,71 \pm 0,20) \cdot 10^{-31} \si{\kg} 
+    =  (0,188 \pm 0,022 )m_e,
+\end{equation*}
+\begin{equation*}
+    m^*_{N=2,8 \cdot 10^{18}} = (2,62 \pm 0,31) \cdot 10^{-31} \si{\kg} 
+    =  (0,287 \pm 0,034 )m_e.
+\end{equation*}
