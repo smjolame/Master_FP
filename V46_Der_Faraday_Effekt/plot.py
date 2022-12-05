@@ -66,13 +66,13 @@ d136= 1.36 / 10 **3
 d1296=1.296 /10**3
 
 
-phi = np.abs(phi1 - phi2)/2 / dhoch
-phi136 = np.abs(phi1_136 - phi2_136) / 2 /d136
-phi1296 = np.abs(phi1_1296 - phi2_1296) / 2 /d1296
+phi = np.deg2rad(np.abs(phi1 - phi2)/2) / dhoch
+phi136 = np.deg2rad(np.abs(phi1_136 - phi2_136) / 2) /d136
+phi1296 = np.deg2rad(np.abs(phi1_1296 - phi2_1296) / 2) /d1296
 
-#tab("build/tab1", l, phi1, phi2 , np.round(phi))
-#tab("build/tab2", l,  phi1_136, phi2_136, np.round(phi136 ))
-#tab("build/tab3", l,  phi1_1296, phi2_1296, np.round(phi1296 ))
+tab("build/tab1", l, phi1, phi2 , np.round(phi, 1))
+tab("build/tab2", l,  phi1_136, phi2_136, np.round(phi136, 1 ))
+tab("build/tab3", l,  phi1_1296, phi2_1296, np.round(phi1296,1 ))
 
 
 plt.plot(l**2, phi, "x", label="hochrein")
@@ -112,7 +112,7 @@ a_u136=a_u136 * 10**12
 a_u1296=a_u1296 * 10**12
 N136 = 1.2 *10**(18) * 10**6
 N1296 = 2.8 *10**(18) * 10**6
-B = 406 /10*3
+B = 406 /10**3
 
 n = 3.57
 m136= unp.sqrt(const.e**3 * N136 *B / 8 / np.pi**2 / const.epsilon_0 / const.c**3 /n/ a_u136)
@@ -121,5 +121,7 @@ m136= unp.sqrt(const.e**3 * N136 *B / 8 / np.pi**2 / const.epsilon_0 / const.c**
 m1296= unp.sqrt(const.e**3 * N1296 *B / 8 / np.pi**2 / const.epsilon_0 / const.c**3 /n/ a_u136)
 #print(m1296)
 #print(m1296/const.m_e)
-print(1 - m136/const.m_e / 0.067)
-print(1 - m1296/const.m_e / 0.067)
+#print(1 - m136/const.m_e / 0.067)
+#print(1 - m1296/const.m_e / 0.067)
+#print(np.sqrt(180/np.pi))
+#print(const.m_e * 0.067)
