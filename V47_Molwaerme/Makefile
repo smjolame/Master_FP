@@ -1,13 +1,13 @@
 all: build/main.pdf
  
 # hier Python-Skripte: 
-plots: FORCE | build
+alpha.pdf: FORCE | build
 	  MATPLOTLIBRC="$$(dirname "$$(pwd)")/default/matplotlibrc" \
 	  TEXINPUTS="$$(dirname "$$(pwd)")/default:" \
 	python plot.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: 
+build/main.pdf: alpha.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS=build: \

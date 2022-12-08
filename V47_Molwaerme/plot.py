@@ -84,8 +84,8 @@ e = np.sqrt(np.diag(cov))
 a_u= ufloat(p[0],e[0])
 b_u= ufloat(p[1],e[1])
 
-print(a_u)
-print(b_u)
+#print(a_u)
+#print(b_u)
 
 
 x = np.linspace(T_alpha[0], T_alpha[T_alpha.size  -1], 100)
@@ -107,9 +107,11 @@ c_v = c_p - 9 * alpha_T**2 * kappa * V_0 * T
 
 tab("build/cv",np.round(T,1),c_p,  c_v_u)
 
-plt.plot(T, c_v , "x" )
+plt.plot(T, c_v , "x", label= r"$c_v$" )
+plt.axhline(y = 3 * 8.3143, color = 'r', linestyle = '--', label= r"$3 R $")
 plt.xlabel(r" $T$ in $\si{\kelvin}$")
 plt.ylabel(r"$c_v$ in $\si{\joule\per\mole\per\kelvin}$")
+plt.legend(loc="best")
 plt.savefig("build/c_v.pdf")
 
 #######################################
