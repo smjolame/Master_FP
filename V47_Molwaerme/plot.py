@@ -138,3 +138,5 @@ v_l = 4.7 * 10**3 #m/s
 v_t = 2.26*10**3 #m/s
 Qd= const.hbar / const.k *np.power(18 * np.pi**2 * rho * const.N_A / M  / (1/v_l**3 + 2/v_t**3), 1/3  )
 print(Qd)
+print(1-Q_u /345)
+print(1-Qd /345)
