@@ -69,11 +69,12 @@ T_r = T(r_r)
 dT =  T_r[1:] - T_r[:T_r.size -1] 
 
 ########################
-m = 342 # Masse in g
+m = 342 / 10**3# Masse in kg
 V_0 =  7.11 /10**6  # m**3 / mol
+rho= 8.92 * 10**6 /10**3 # g in m**3
 kappa= 140 # N /m**2
 E = i[1:] * u[1:] *t 
-M= 3.55 # in g / mol
+M= 63.55 /10**3# in kg / mol
 c_p = E * M / m /  dT # /mol
 ##############
 T_alpha, a = np.genfromtxt("data/alpha.txt", unpack = True)
@@ -92,25 +93,46 @@ x = np.linspace(T_alpha[0], T_alpha[T_alpha.size  -1], 100)
 plt.plot(T_alpha, a , "x", label = "Data")
 plt.plot(x, alpha(x, p[0],p[1]) , label = "Fit")
 plt.xlabel(r" $T$ in $K$")
-plt.ylabel(r"$\alpha$ in $10^{-6} \si{\per\degreeCelsius}$")
+plt.ylabel(r"$\alpha$ in $10^{-6} \si{\per\kelvin}$")
 plt.legend(loc="best")
 plt.savefig("build/alpha.pdf")
 plt.clf()
 ############################################
-#alpha_T_u=alpha(T,a_u,b_u) * 10**(-6)
-#c_v_u = c_p - 9 * alpha_T_u**2 * kappa * V_0 * T 
+T = T_r[1:] + 273.15 #in K 
+alpha_T_u=alpha(T,a_u,b_u) * 10**(-6)
+c_v_u = c_p - 9 * alpha_T_u**2 * kappa * V_0 * T
 
-alpha_T=alpha(T_r[1:],p[0],p[1]) * 10**(-6)
-c_v = c_p - 9 * alpha_T**2 * kappa * V_0 * T_r[1:]
+alpha_T=alpha(T,p[0],p[1]) * 10**(-6)
+c_v = c_p - 9 * alpha_T**2 * kappa * V_0 * T
 
+tab("build/cv",np.round(T,1),c_p,  c_v_u)
 
-
-plt.plot(T_r[1:], c_v , "x" )
-plt.xlabel(r" $T$ in $\si{\degreeCelsius}$")
-plt.ylabel(r"$c_v$ in $\si{\joule\per\mole\per\degreeCelsius}$")
+plt.plot(T, c_v , "x" )
+plt.xlabel(r" $T$ in $\si{\kelvin}$")
+plt.ylabel(r"$c_v$ in $\si{\joule\per\mole\per\kelvin}$")
 plt.savefig("build/c_v.pdf")
 
 #######################################
-T = T_r[1:] + 273.15 
 Cv= c_v[T<=170]
-print(Cv)
+tab("build/Deb", T[T<=170], Cv)
+#############################################
+Q_T= np.array(
+[4.6,
+ 4.7,
+ 4.9,
+ 3.5,
+ 3.6,
+ 2.0,
+ 2.1])
+
+Q = Q_T * T[T<=170]
+
+#tab("build/Deb", np.round(T[T<=170],1), np.round(Cv,2), Q_T, np.round(Q,1))
+
+Q_u= ufloat(np.mean(Q), np.std(Q))
+print(Q_u)
+####################################################################################
+v_l = 4.7 * 10**3 #m/s
+v_t = 2.26*10**3 #m/s
+Qd= const.hbar / const.k *np.power(18 * np.pi**2 * rho * const.N_A / M  / (1/v_l**3 + 2/v_t**3), 1/3  )
+print(Qd)

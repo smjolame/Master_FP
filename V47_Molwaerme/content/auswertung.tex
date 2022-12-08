@@ -1,6 +1,68 @@
-\section{Auswertung}
+\section{Analysis}
 \label{sec:Auswertung}
-Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsicherheiten mit dem Modul \glqq Uncertainties" \cite{uncertainties}, die Ausgleichsrechnungen mit dem Modul \glqq Scipy" \cite{scipy} durchgeführt und die grafischen Darstellungen über das Modul \glqq Matplotlib" \cite{matplotlib} erstellt.
+The following calculations are made with  "Numpy" \cite{numpy}, 
+"Uncertainties" \cite{uncertainties}, 
+"Scipy" \cite{scipy} and  "Matplotlib" \cite{matplotlib}.
+
+\subsection{Fitting the linear expansion coefficient}
+For the following calculations the expansion coefficient is needed.
+For that purpose the data in Table \ref{tab:alpha}
+is fittet with
+\begin{equation*}
+    \alpha = a \frac{1}{T} + b:
+\end{equation*}
+\begin{equation*}
+    a = -873 \pm 4
+\end{equation*}
+\begin{equation*}
+    b= 19.411 \pm 0.029
+\end{equation*}
+
+
+\subsection{Calculating the molar heat capacity}
+For the calculation of the molar heat capacity 
+the current $I$, voltage $U$ , time $t$ and resistance $R$ are measured 
+like described in section \ref{sec:Durchführung} (see Table \ref{tab:Messwerte}).
+\newline \newline
+\noindent The engergy the coppy receives is calculated by 
+\begin{equation}
+    E = U \cdot I \cdot \Delta t .
+\end{equation}
+\noindent With \eqref{} and the resistance $R$ the temperature $T$ is determined.
+The molar heat capacity for constant pressure ist calculated by
+\begin{equation}
+    c_p = \frac{ M}{m} \frac{E}{\Delta T}.
+\end{equation}
+\noindent $M = \qty{63.55}{\g\per\mole}$ is the molar Mass and
+$m= \qty{342}{\g}$ \cite{Molmasse_kupfer}\cite{V47}.
+
+\begin{table}
+    \centering
+    \caption{bla}
+    \label{tab:bla}
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c c c}
+        \toprule
+        $T$ in $\si{\kelvin}$ & $c_v$ in $\si{\joule\per\mole\per\kelvin}$ & $\frac{\Theta_D}{T}$ & $\Theta$ in $\si{\kelvin}$ \\
+        \midrule
+        103,3  &  16,78  &  4,6  &  475,2  \\
+        113,3  &  17,38  &  4,7  &  532,6  \\
+        123,4  &  18,50  &  4,9  &  604,6  \\
+        133,3  &  19,22  &  3,5  &  466,4  \\
+        143,2  &  19,86  &  3,6  &  515,5  \\
+        153,1  &  20,36  &  2,0  &  306,3  \\
+        163,2  &  21,29  &  2,1  &  342,6  \\
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
+
+
+
+
+
+
 %Messwerte: Alle gemessenen physikalischen Größen sind übersichtlich darzustellen.
 %
 %Auswertung:
