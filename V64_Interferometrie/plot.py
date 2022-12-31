@@ -52,8 +52,26 @@ theta_rad = theta_0
 def n_func(M_,theta):
     return 1/(1-(M_*lambda_0)/(2*D*theta*theta_0))
 
-n = n_func(M,theta_rad)
-print(n)
+n_glas = n_func(M,theta_rad)
+print(n_glas)
+
+#Brechungsindex Gas:
+#Luft
+L=ufloat(0.1,0.0001) #m
+T = 21.1+273.15 #K
+p, M1,M2,M3,M4 = np.genfromtxt("data/Brechungsindex_Luft_Dummy.txt", delimiter=',', unpack=True)
+
+
+def n_func2(M_):
+    return (M_*lambda_0)/L+1
+
+
+n_luft1 = n_func2(M1)
+n_luft2 = n_func2(M2)
+n_luft3 = n_func2(M3)
+n_luft4 = n_func2(M4)
+
+
 
 
 
