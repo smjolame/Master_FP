@@ -15,7 +15,7 @@ the variation of heat is dependend of the pressure $p$ and the volume $V$.
 For experimental purposes it is beneficial to keep the pressure or the volume constant.
 The difference between these two cases is given by
 \begin{equation}
-    C_p - C_V = TV \alpha_V^2 B.
+    C_p - C_V = T V \alpha_V^2 B.
 \end{equation}
 $T$ is the temperature, $V$ the volume, $\alpha_V$ the expansion coefficient and $B$ the bulk modulus.
 So this difference depends on properties of the respective material and the state of aggregation. 
@@ -24,7 +24,7 @@ For experimental practicability, often the heat capacity by constant pressure is
 
 
 \subsection{Dulong-Petit}
-In the classical theory the heat capacity is constant and oly depends on the number of degrees of freedom $f$ of the system:
+In the classical theory the heat capacity is constant and only depends on the number of degrees of freedom $f$ of the system:
 \begin{equation}
     C = \frac{f}{2} R.
 \end{equation} 
@@ -62,7 +62,7 @@ To approximate these branches it needs a linear disperionrelation.
 
 \begin{figure}
     \centering 
-    \includegraphics[width=.8\textwidth]{Bilder/disperion.PNG}
+    \includegraphics[width=.8\textwidth]{bilder/Disperion.png}
     \caption{Typical disperion relations of an one atomic cristall. \cite[S. 223]{gross2012festkoerperphysik}}
     \label{fig:disperion}
 \end{figure}
@@ -81,12 +81,14 @@ with
 \end{equation} 
 as the spectral frequency distribution of the oscillators and $N_L$ as the Loschmidt constant.
 $v_\text{long}$ and $v_\text{trans}$ are the respective phase velocities of the logitudinal- and transversal oscillations.
-To calculate $\omega_D$, the equation \eqref{eq:Debey} can be transformt into
+To calculate $\omega_D$, the equation \eqref{eq:Debey} can be transformed into
 \begin{equation}
+    \label{eq:omega}
     \omega_D = \left[\frac{18\pi^2N_L}{L^3}\left(\frac{1}{v_\text{long}^3}+\frac{2}{v_\text{trans}^3}\right)^{-1}\right]^\frac{1}{3}.
 \end{equation}
 In this model the heat capacity is given by the equation:
 \begin{align}
+    \label{eq:cvv}
     C_V^E &= 9Nk_B\left(\frac{T}{\Theta_D}\right)^3 \int_0^{\frac{\Theta_D}{T}}\frac{x^4e^x}{\left(e^x-1\right)^2} \symup{d}x \\
     & =
     \begin{cases}

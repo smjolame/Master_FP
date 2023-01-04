@@ -98,6 +98,7 @@ plt.legend(loc="best")
 plt.savefig("build/alpha.pdf")
 plt.clf()
 ############################################
+
 T = T_r[1:] + 273.15 #in K 
 alpha_T_u=alpha(T,a_u,b_u) * 10**(-6)
 c_v_u = c_p - 9 * alpha_T_u**2 * kappa * V_0 * T
@@ -105,7 +106,7 @@ c_v_u = c_p - 9 * alpha_T_u**2 * kappa * V_0 * T
 alpha_T=alpha(T,p[0],p[1]) * 10**(-6)
 c_v = c_p - 9 * alpha_T**2 * kappa * V_0 * T
 
-tab("build/cv",np.round(T,1),c_p,  c_v_u)
+#tab("build/cv",np.round(T,1),c_p,  c_v_u)
 
 plt.plot(T, c_v , "x", label= r"$c_v$" )
 plt.axhline(y = 3 * 8.3143, color = 'r', linestyle = '--', label= r"$3 R $")
@@ -113,7 +114,7 @@ plt.xlabel(r" $T$ in $\si{\kelvin}$")
 plt.ylabel(r"$c_v$ in $\si{\joule\per\mole\per\kelvin}$")
 plt.legend(loc="best")
 plt.savefig("build/c_v.pdf")
-
+"""
 #######################################
 Cv= c_v[T<=170]
 tab("build/Deb", T[T<=170], Cv)
@@ -140,3 +141,4 @@ Qd= const.hbar / const.k *np.power(18 * np.pi**2 * rho * const.N_A / M  / (1/v_l
 print(Qd)
 print(1-Q_u /345)
 print(1-Qd /345)
+"""
