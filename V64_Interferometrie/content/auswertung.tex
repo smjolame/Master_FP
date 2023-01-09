@@ -1,6 +1,78 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsicherheiten mit dem Modul \glqq Uncertainties" \cite{uncertainties}, die Ausgleichsrechnungen mit dem Modul \glqq Scipy" \cite{scipy} durchgeführt und die grafischen Darstellungen über das Modul \glqq Matplotlib" \cite{matplotlib} erstellt.
+
+
+\begin{table}
+    \centering
+    \caption{Messwerte für die Kontrastbestimmung. }
+    \label{tab:kontrast}
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{S S S S}
+        \toprule
+
+        \midrule
+
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
+\begin{equation}
+    K = A \lvert{\cos(\Theta)\sin(\Theta)}\rvert
+\end{equation}
+
+\begin{equation}
+    A = \num{1(1)}
+\end{equation}
+
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{build/Kontrast.pdf}
+    \caption{Messwerte des Kontrastes mit Ausgleichsrechnung gemäß Gleichung REF.}
+    \label{plot1}
+\end{figure}
+
+\begin{table}
+    \centering
+    \caption{Messwerte für die Bestimmung des Brechungsindex von Glas. }
+    \label{tab:glas}
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{S S S}
+        \toprule
+
+        \midrule
+
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
+
+\begin{table}
+    \centering
+    \caption{Messwerte für die Bestimmung des Brechungsindex von Luft. $M_i$ bezeichnet die Anzahl durchlaufender Interferenzmaxima des $i$-ten Durchganges.}
+    \label{tab:luft}
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{S S S S S S S S S}
+        \toprule
+        & \multicolumn{4}{c}{Ohne Haube} & \multicolumn{4}{c}{Mit Haube} \\
+            \cmidrule(lr){2-5}\cmidrule(lr){6-9}
+
+        {$p \mathbin{/} \si{\milli\bar}$} & {$M_1$} & {$n_1$} & {$M_2$} & {$n_2$} & {$M_3$} & {$n_3$} & {$M_4$} & {$n_4$} \\
+
+        \midrule
+
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
+\begin{equation}
+    n = \frac{a}{TR}p+b
+\end{equation}
+
+%& \multicolumn{4}{c}{Ohne Haube} & \multicolumn{4}{c}{Mit Haube} \\
+%\cmidrule(lr){2-5}\cmidrule(lr){6-9}
 %Messwerte: Alle gemessenen physikalischen Größen sind übersichtlich darzustellen.
 %
 %Auswertung:
