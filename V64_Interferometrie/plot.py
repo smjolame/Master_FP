@@ -101,25 +101,25 @@ n_luft1_n = unp.nominal_values(n_luft1)
 n_luft2_n = unp.nominal_values(n_luft2)
 n_luft3_n = unp.nominal_values(n_luft3)
 
-n_luft1_mean = np.mean(unp.nominal_values(n_luft1))
-n_luft2_mean = np.mean(unp.nominal_values(n_luft2))
-n_luft3_mean = np.mean(unp.nominal_values(n_luft3))
+#n_luft1_mean = np.mean(unp.nominal_values(n_luft1))
+#n_luft2_mean = np.mean(unp.nominal_values(n_luft2))
+#n_luft3_mean = np.mean(unp.nominal_values(n_luft3))
+#
+#
+#n_luft1_std = np.std(unp.nominal_values(n_luft1))
+#n_luft2_std = np.std(unp.nominal_values(n_luft2))
+#n_luft3_std = np.std(unp.nominal_values(n_luft3))
 
-
-n_luft1_std = np.std(unp.nominal_values(n_luft1))
-n_luft2_std = np.std(unp.nominal_values(n_luft2))
-n_luft3_std = np.std(unp.nominal_values(n_luft3))
-
-n_luft = ufloat(np.mean([n_luft1_mean,n_luft2_mean,n_luft3_mean]),np.mean([n_luft1_std,n_luft2_std,n_luft3_std]))
+n_luft = ufloat(np.mean([n_luft1_n[-1],n_luft2_n[-1],n_luft3_n[-1]]),np.std([n_luft1_n[-1],n_luft2_n[-1],n_luft3_n[-1]]))
 print('n_luft',n_luft)
-n_luft_mean = np.array([n_luft1_mean,n_luft1_std,n_luft2_mean,n_luft2_std,n_luft3_mean,n_luft3_std])
+#n_luft_mean = np.array([n_luft1_mean,n_luft1_std,n_luft2_mean,n_luft2_std,n_luft3_mean,n_luft3_std])
 
 
 n_luft_Tabelle_n = np.array([n_luft1_n,n_luft2_n,n_luft3_n]).T
 
 # n Daten abspeichern
 np.savetxt('build/n_Luft.txt',n_luft_Tabelle_n,fmt='%1.8f', delimiter = '  &  ')
-np.savetxt('build/n_Luft_mean.txt',n_luft_mean.T,fmt='%1.8f', delimiter = '  &  ')
+#np.savetxt('build/n_Luft_mean.txt',n_luft_mean.T,fmt='%1.8f', delimiter = '  &  ')
 
 ####Gas
 R = const.R
