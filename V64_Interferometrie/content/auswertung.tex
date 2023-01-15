@@ -5,8 +5,9 @@ Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsiche
 \subsection{Kontrastbestimmung}
 
 Die gemessenen Spannungen können über Gleichung \eqref{eq:Kontrast} in die jeweiligen Kontrastwerte überführt werden.
-In Abbildung \ref{fig:plot1} sind die so bestimmten Kontrastwerte gegen die Drehwinkel des Polarisationsfilters aufgetragen.
-
+In Abbildung \ref{fig:plot1} sind die bestimmten Kontrastwerte gegen die Drehwinkel des Polarisationsfilters aufgetragen.
+Darüber wird während des Versuches ein maximaler Kontrast von $K = \num{0.91}$ bei einem Polarisatorwinkel von $\phi = \SI{135}{\degree}$ festgestellt.
+Für die weiteren Messungen wird diese Filterposition beibehalten.
 
 \begin{table}
     \centering
@@ -63,6 +64,7 @@ bestimmen.
 \subsection{Brechungsindex von Glas}
 
 Die jeweiligen Erfassungen der Nulldurchgänge sind in Tabelle \ref{tab:glas} dargestellt.
+Die Dicke der Glasplatten beträgt $L = \SI{1}{\milli\m}$.
 Über Gleichung \eqref{eq:n_glas} lässt sich mit diesen Werten der Brechungsindex bestimmen. 
 
 
@@ -97,14 +99,14 @@ bestimmt werden.
 
 \subsection{Brechungsindex von Luft}
 
-Die gemessenen Nulldurchgänge ($M_i$) und die über \eqref{eqn:n_luft} bestimmten Brechungsindicies sind der Tabelle \ref{tab:luft} zu entnehmen.
+Die gemessenen Nulldurchgänge ($M_i$) und die über Gleichung \eqref{eqn:n_luft} bestimmten Brechungsindicies sind der Tabelle \ref{tab:luft} zu entnehmen.
 
 \begin{table}
     \centering
     \caption{Messwerte für die Bestimmung des Brechungsindex von Luft. $M_i$ bezeichnet die Anzahl durchlaufender Interferenzmaxima des $i$-ten Durchganges.}
     \label{tab:luft}
     \sisetup{table-format = 1.8}
-    \begin{tabular}{S[table-format = 3.0] S[table-format = 2.0] S S[table-format = 2.0] S S[table-format = 2.0] S}
+    \begin{tabular}{S[table-format = 3.0] | S[table-format = 2.0] S | S[table-format = 2.0] S | S[table-format = 2.0] S}
         \toprule
 
         {$p \mathbin{/} \si{\milli\bar}$} & {$M_1$} & {$n_1$} & {$M_2$} & {$n_2$} & {$M_3$} & {$n_3$} \\
@@ -137,6 +139,28 @@ Die gemessenen Nulldurchgänge ($M_i$) und die über \eqref{eqn:n_luft} bestimmt
     \end{tabular}
 \end{table}
 
+
+\begin{table}
+    \centering
+    \caption{Berechnete Brechungsindicies für Luft aus den jeweiligen Messdurchgängen.}
+    \label{tab:n_luft}
+    \sisetup{table-format = 1}
+    \begin{tabular}{S S[table-format = 1.8]}
+        \toprule
+        {\text{Messung}}  & {$n$}  \\
+
+        \midrule
+
+        1  & \num{1.00012901(00008027)} \\
+        2  & \num{1.00012931(00007936)} \\
+        3  & \num{1.00012871(00008022)} \\
+        \bottomrule
+
+
+    \end{tabular}
+\end{table}
+
+
 \subsection{Lorentz-Lorenz-Gesetz}
 
 Das in der Theorie \ref{sec:Theorie} beschriebene Lorentz-Lorenz-Gesetz setzt den Brechungsindex und den herrschenden Druck in Zusammenhang.
@@ -167,6 +191,10 @@ Die Ergebnisse sind in Tabelle \ref{tab:lorentz} aufgeführt.
 
     \end{tabular}
 \end{table}
+
+
+
+
 
 
 %& \multicolumn{4}{c}{Ohne Haube} & \multicolumn{4}{c}{Mit Haube} \\
