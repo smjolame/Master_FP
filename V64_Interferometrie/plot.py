@@ -71,7 +71,7 @@ np.savetxt('build/n_Glas.txt',n_glas.T, fmt='%1.8f' , delimiter = '  &  ')
 n_glas_mean = np.mean(n_glas)
 n_glas_err = np.std(n_glas)
 n_glas_exp=np.array([n_glas_mean,n_glas_err])
-
+n_glas_u = ufloat(n_glas_mean,n_glas_err)
 np.savetxt('build/n_Glas_mean.txt',n_glas_exp, fmt='%1.8f' , delimiter = '  &  ')
 
 
@@ -110,8 +110,8 @@ n_luft1_std = np.std(unp.nominal_values(n_luft1))
 n_luft2_std = np.std(unp.nominal_values(n_luft2))
 n_luft3_std = np.std(unp.nominal_values(n_luft3))
 
-
-
+n_luft = ufloat(np.mean([n_luft1_mean,n_luft2_mean,n_luft3_mean]),np.mean([n_luft1_std,n_luft2_std,n_luft3_std]))
+print('n_luft',n_luft)
 n_luft_mean = np.array([n_luft1_mean,n_luft1_std,n_luft2_mean,n_luft2_std,n_luft3_mean,n_luft3_std])
 
 
@@ -163,6 +163,16 @@ plt.legend(fontsize='small')
 plt.tight_layout()
 plt.grid()
 plt.savefig("build/Gas.pdf")
+
+
+#######abw
+
+nL = 1.0003
+nG = 1.45
+print(nL,n_luft)
+print(nG,n_glas_u)
+print(abw(nL,n_luft))
+print(abw(nG,n_glas_u))
 
 ##Curvefit
 #def BeispielFunktion(x,a,b):
