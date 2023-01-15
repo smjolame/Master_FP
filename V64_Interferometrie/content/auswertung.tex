@@ -2,74 +2,172 @@
 \label{sec:Auswertung}
 Alle Berechnungen werden mit dem Programm \glqq Numpy" \cite{numpy}, die Unsicherheiten mit dem Modul \glqq Uncertainties" \cite{uncertainties}, die Ausgleichsrechnungen mit dem Modul \glqq Scipy" \cite{scipy} durchgeführt und die grafischen Darstellungen über das Modul \glqq Matplotlib" \cite{matplotlib} erstellt.
 
+\subsection{Kontrastbestimmung}
+
+Die gemessenen Spannungen können über Gleichung \eqref{eq:Kontrast} in die jeweiligen Kontrastwerte überführt werden.
+In Abbildung \ref{fig:plot1} sind die so bestimmten Kontrastwerte gegen die Drehwinkel des Polarisationsfilters aufgetragen.
+
 
 \begin{table}
     \centering
     \caption{Messwerte für die Kontrastbestimmung. }
     \label{tab:kontrast}
-    \sisetup{table-format = 1.2}
-    \begin{tabular}{S S S S}
-        \toprule
-
+    \sisetup{table-format = 1.3}
+    \begin{tabular}{S[table-format = 3] S S S }
+        \toprule   
+        {$\phi \mathbin{/} \si{\degree}$} & {$U_\text{min} \mathbin{/} \si{\volt}$} & {$U_\text{max} \mathbin{/} \si{\volt}$} & {$K$} \\
         \midrule
-
+        0   & 0.923 &  1.163 & 0.12 \\   
+        15  & 0.522 &  0.910 & 0.27 \\
+        30  & 0.233 &  0.832 & 0.56 \\
+        40  & 0.137 &  0.807 & 0.71 \\
+        45  & 0.119 &  0.875 & 0.76 \\
+        50  & 0.107 &  0.905 & 0.79 \\
+        60  & 0.124 &  1.093 & 0.80 \\ 
+        75  & 0.328 &  1.205 & 0.57 \\
+        90  & 1.021 &  1.246 & 0.10 \\
+        105 & 0.802 &  1.900 & 0.41 \\
+        120 & 0.338 &  2.900 & 0.79 \\
+        130 & 0.164 &  3.260 & 0.90 \\
+        135 & 0.155 &  3.170 & 0.91 \\
+        140 & 0.181 &  3.270 & 0.90 \\
+        150 & 0.347 &  2.920 & 0.79 \\
+        165 & 0.757 &  2.040 & 0.46 \\
+        180 & 0.860 &  1.112 & 0.13 \\
         \bottomrule
 
     \end{tabular}
 \end{table}
 
-\begin{equation}
-    K = A \lvert{\cos(\Theta)\sin(\Theta)}\rvert
-\end{equation}
+Wie in der Theorie gezeigt, kann aus Gleichung \eqref{eq:Kontrast} der Kontrast in Abhängigkeit des Drehwinkels dargestellt werden.
+Damit kann eine Ausgleichsrechnung mit der Funktion aus Gleichung \eqref{eqn:Kon} durchgeführt werden.
 
 \begin{equation}
-    A = \num{1(1)}
+    \label{eqn:Kon}
+    K(\phi) = A \lvert{\cos(\phi)\sin(\phi)}\rvert
 \end{equation}
+
+Aus dieser Rechnung lässt sich der Fitparameter zu 
+\begin{equation}
+    A = \num{1.68(06)}
+\end{equation}
+bestimmen.
+
 
 \begin{figure}
     \includegraphics[width=0.9\textwidth]{build/Kontrast.pdf}
-    \caption{Messwerte des Kontrastes mit Ausgleichsrechnung gemäß Gleichung REF.}
-    \label{plot1}
+    \caption{Messwerte des Kontrastes mit Ausgleichsrechnung gemäß Gleichung \eqref{eqn:Kon}.}
+    \label{fig:plot1}
 \end{figure}
+
+\subsection{Brechungsindex von Glas}
+
+Die jeweiligen Erfassungen der Nulldurchgänge sind in Tabelle \ref{tab:glas} dargestellt.
+Über Gleichung \eqref{eq:n_glas} lässt sich mit diesen Werten der Brechungsindex bestimmen. 
+
 
 \begin{table}
     \centering
     \caption{Messwerte für die Bestimmung des Brechungsindex von Glas. }
     \label{tab:glas}
-    \sisetup{table-format = 1.2}
-    \begin{tabular}{S S S}
+    \sisetup{table-format = 2}
+    \begin{tabular}{S S S[table-format = 1.8]}
         \toprule
-
+        {\text{Durchgang}} & {$M$} & {$n$} \\
         \midrule
-
+        1     &  34 & 1.54620974  \\
+        2     &  34 & 1.54620974  \\
+        3     &  34 & 1.54620974  \\
+        4     &  35 & 1.57145515  \\
+        5     &  37 & 1.62450261  \\
+        6     &  34 & 1.54620974  \\
+        7     &  36 & 1.59753863  \\
+        8     &  36 & 1.59753863  \\
+        9     &  34 & 1.54620974  \\
+        10    &  37 & 1.62450261  \\
         \bottomrule
 
     \end{tabular}
 \end{table}
+Im Mittel kann der Brechungsindex von Glas zu
+\begin{equation}
+    n_\text{Glas} = \num{1.57466(03174)}
+\end{equation}
+bestimmt werden.
 
+\subsection{Brechungsindex von Luft}
+
+Die gemessenen Nulldurchgänge ($M_i$) und die über \eqref{eqn:n_luft} bestimmten Brechungsindicies sind der Tabelle \ref{tab:luft} zu entnehmen.
 
 \begin{table}
     \centering
     \caption{Messwerte für die Bestimmung des Brechungsindex von Luft. $M_i$ bezeichnet die Anzahl durchlaufender Interferenzmaxima des $i$-ten Durchganges.}
     \label{tab:luft}
-    \sisetup{table-format = 1.2}
-    \begin{tabular}{S S S S S S S S S}
+    \sisetup{table-format = 1.8}
+    \begin{tabular}{S[table-format = 3.0] S[table-format = 2.0] S S[table-format = 2.0] S S[table-format = 2.0] S}
         \toprule
-        & \multicolumn{4}{c}{Ohne Haube} & \multicolumn{4}{c}{Mit Haube} \\
-            \cmidrule(lr){2-5}\cmidrule(lr){6-9}
 
-        {$p \mathbin{/} \si{\milli\bar}$} & {$M_1$} & {$n_1$} & {$M_2$} & {$n_2$} & {$M_3$} & {$n_3$} & {$M_4$} & {$n_4$} \\
+        {$p \mathbin{/} \si{\milli\bar}$} & {$M_1$} & {$n_1$} & {$M_2$} & {$n_2$} & {$M_3$} & {$n_3$} \\
 
         \midrule
+        0    &  0   &   1.00000000  &  0   & 1.00000000  & 0   &  1.00000000  \\
+        50   &  1   &   1.00000633  &  2   & 1.00001266  & 1   &  1.00000633  \\
+        100  &  3   &   1.00001899  &  4   & 1.00002532  & 3   &  1.00001899  \\
+        150  &  6   &   1.00003798  &  6   & 1.00003798  & 6   &  1.00003798  \\
+        200  &  8   &   1.00005064  &  8   & 1.00005064  & 8   &  1.00005064  \\
+        250  &  10  &   1.00006330  &  10  & 1.00006330  & 10  &  1.00006330  \\
+        300  &  12  &   1.00007596  &  12  & 1.00007596  & 12  &  1.00007596  \\
+        350  &  14  &   1.00008862  &  14  & 1.00008862  & 14  &  1.00008862  \\
+        400  &  16  &   1.00010128  &  16  & 1.00010128  & 16  &  1.00010128  \\
+        450  &  18  &   1.00011394  &  18  & 1.00011394  & 18  &  1.00011394  \\
+        500  &  20  &   1.00012660  &  20  & 1.00012660  & 20  &  1.00012660  \\
+        550  &  23  &   1.00014559  &  22  & 1.00013926  & 22  &  1.00013926  \\
+        600  &  25  &   1.00015825  &  25  & 1.00015825  & 25  &  1.00015825  \\
+        650  &  27  &   1.00017091  &  27  & 1.00017091  & 27  &  1.00017091  \\
+        700  &  29  &   1.00018357  &  29  & 1.00018357  & 29  &  1.00018357  \\
+        750  &  31  &   1.00019623  &  31  & 1.00019623  & 31  &  1.00019623  \\
+        800  &  33  &   1.00020889  &  33  & 1.00020889  & 33  &  1.00020889  \\
+        850  &  35  &   1.00022155  &  35  & 1.00022155  & 35  &  1.00022155  \\
+        900  &  37  &   1.00023421  &  37  & 1.00023421  & 37  &  1.00023421  \\
+        950  &  39  &   1.00024687  &  39  & 1.00024687  & 39  &  1.00024687  \\
+        990  &  41  &   1.00025953  &  41  & 1.00025953  & 41  &  1.00025953  \\
 
         \bottomrule
 
     \end{tabular}
 \end{table}
 
+\subsection{Lorentz-Lorenz-Gesetz}
+
+Das in der Theorie \ref{sec:Theorie} beschriebene Lorentz-Lorenz-Gesetz setzt den Brechungsindex und den herrschenden Druck in Zusammenhang.
+Über Gleichung \eqref{eqn:lorentz} lässt sich eine Ausgleichsrechnung der Form
+
+
 \begin{equation}
-    n = \frac{a}{TR}p+b
+    n = \sqrt{1+ \frac{a\cdot p}{RT}} + b
 \end{equation}
+
+durchführen.
+Dazu wird die Temperatur zu $T = \SI{20.7}{\celsius}$ bestimmt. 
+Die Ergebnisse sind in Tabelle \ref{tab:lorentz} aufgeführt.
+
+\begin{table}
+    \centering
+    \caption{Fitparameter der Ausgleichsrechnung für die Brechungsindicies nach dem Lorentz-Lorenz-Gesetz.}
+    \label{tab:lorentz}
+    \sisetup{table-format = 1}
+    \begin{tabular}{S S S[table-format = 1.8]}
+        \toprule
+        {\text{Messung}} & {$a \mathbin{/} \si{\m^3\per\mol}$} & {$b$}  \\
+        \midrule
+        1  & \num{1.299(007)} & \num{-3.7(9)e-06} \\
+        2  & \num{1.284(006)} & \num{-1.9(7)e-06} \\
+        3  & \num{1.298(007)} & \num{-3.9(9)e-06} \\
+        \bottomrule
+
+    \end{tabular}
+\end{table}
+
 
 %& \multicolumn{4}{c}{Ohne Haube} & \multicolumn{4}{c}{Mit Haube} \\
 %\cmidrule(lr){2-5}\cmidrule(lr){6-9}
