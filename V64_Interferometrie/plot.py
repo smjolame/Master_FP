@@ -124,7 +124,7 @@ np.savetxt('build/n_Luft.txt',n_luft_Tabelle_n,fmt='%1.8f', delimiter = '  &  ')
 ####Gas
 R = const.R
 def n_func_gas(p_,a,b):
-    return np.sqrt(1 + a*p_/(R*T)) + b
+    return np.sqrt(b + a*p_/(R*T))
 
 
 ##### curvefits für Gas
@@ -167,13 +167,12 @@ plt.savefig("build/Gas.pdf")
 
 #######abw
 
-nL = 1.0003
+nL = 1.000292
 nG = 1.45
 print(nL,n_luft)
 print(nG,n_glas_u)
-print(abw(nL,n_luft))
-print(abw(nG,n_glas_u))
-
+print(abw(nL-1,n_luft-1))
+print(abw(nG-1,n_glas_u-1))
 ##Curvefit
 #def BeispielFunktion(x,a,b):
 #    return a*x+b 
