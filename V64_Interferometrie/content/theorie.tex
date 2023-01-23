@@ -2,7 +2,7 @@
 \label{sec:Theorie}
 
 Licht ist eine elektromagnetische Welle, 
-dessen elektrische Komponente im Fall für monochromatischem Licht durch
+dessen elektrische Komponente im Fall monochromatischen Lichtes durch
 \begin{equation}
   \label{eq:Welle}
   \vec{E}=\vec{E_0}\exp{\left(i (\omega t-\vec{k}\vec{r})\right)}
@@ -14,7 +14,7 @@ $\omega$ ist die Kreisfrequenz und  $\vec{k}$ der Wellenvektor.
 Die Intensität einer Welle ist proportional zu der Amplitude $\vec{E}$:
 \begin{equation}
   \label{eq:Intensitaet}
-  I \propto \langle \lvert \vec{E} \rvert^2 \rangle.
+  I \propto \langle \lvert \vec{E} \rvert^2 \rangle
 \end{equation} 
 
 
@@ -31,9 +31,9 @@ und $\phi$ der Polarisationswinkel ist.
 \noindent Bei dem Sagnac-Interferometer überlagern sich zwei elektromagnetische Wellen:
 \begin{equation}
   E_1 = E_{1} \cos{\omega t} = E_{0,1} \sin(\phi) \cos{(\omega t)} \quad 
-  E_2 = E_{2} \cos{(\omega t + \delta) } =E_{0,2} \cos(\phi)  \cos{(\omega t + \delta) } ,
+  E_2 = E_{2} \cos{(\omega t + \delta) } =E_{0,2} \cos(\phi)  \cos{(\omega t + \delta) } 
 \end{equation}
-\noindent sodass für die Intensität mit Gl. \eqref{eq:Intensitaet} folgt.
+\noindent sodass für die Intensität mit Gl. \eqref{eq:Intensitaet} folgt:
 \begin{align}
   I &\propto \langle \lvert
   E_1+E_2 \rvert^2 \rangle =
@@ -46,15 +46,15 @@ also für Vielfache von $\delta = 2\pi$.
 $I_{\text{min}}$ tritt bei destruktiver Interferenz auf,
 also für $\delta = 2\pi(n+1)$ ($n \in \mathbb{Z} $).
 
-Damit ergibt sich für die maximale bzw. minimale Intensität
+Damit ergibt sich für die maximale bzw. minimale Intensität:
 \begin{equation}
-  I_{\text{max/min}} \propto I(1\pm 2\cos{\phi}\sin{\phi}).
+  I_{\text{max/min}} \propto I(1\pm 2\cos{\phi}\sin{\phi})
   \label{eq:imaxmin}
 \end{equation}
 \noindent Die Intensitäten werden in Gl. \eqref{eq:Kontrast} eingesetzt:
 \begin{equation}
   \label{eqn:K}
-  K(\phi)=2\cos{\phi}\sin{\phi}=\sin{2\phi}.
+  K(\phi)=2\cos{\phi}\sin{\phi}=\sin{2\phi}
 \end{equation}
 
 \subsection{Brechungsindex}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
@@ -74,7 +74,8 @@ Diese Phasendifferenz führt zu einem veränderten Interzmuster.
 Der Phasenversatz der bei dem Durchlaufen von Glas entsteht,
 ist abhängig von der Laufzeitdifferenz, 
 also dem Brechungsindex $n$ und der Länge $T$ des durchlaufenden Wegs,
-und Phasenverschiebung beim Brechen des Lichtes, das winkelabhängig ist \cite{V64}:
+und der Phasenverschiebung beim Brechen des Lichtes,
+wobei das Brechen winkelabhängig ist \cite{V64}:
 
 \begin{equation}
 \Delta \Phi
@@ -83,25 +84,26 @@ und Phasenverschiebung beim Brechen des Lichtes, das winkelabhängig ist \cite{V
 \end{equation}
 \noindent wobei $\lambda_{\text{vac}}$ die Vakuumwellenlänge 
 und $\Theta$ der Brechungswinkel ist.
-Mit Gl. \eqref{eq:AnzMax} ist der Brechungsindex
+Mit Gl. \eqref{eq:AnzMax} ist der Brechungsindex:
 \begin{equation}
-  n = \left(1 - \frac{M \lambda_{\text{vac}}}{2 T \theta_0 \Delta\Phi}\right)^{-1} .
+  n = \left(1 - \frac{M \lambda_{\text{vac}}}{2 T \theta_0 \Delta\Phi}\right)^{-1} 
   \label{eq:n_glas}
 \end{equation}
 
 \subsubsection{Brechungsindex von Gasen}
 Bei dem Durchlaufen eines Gases mit einem anderen Brechungsindex als die umgebende Luft,
-entsteht ein Phasenversatz
+entsteht ein Phasenversatz:
 \begin{equation}
 \Delta \Phi(\Theta)=\frac{2\pi}{\lambda_{\text{vac}}} \Delta n L
 \label{eq:pM2}
 \end{equation}
-$L$ ist die Länge des durchlaufenden Weges \cite{V64}.
+$L$ ist die Länge des durchlaufenen Weges \cite{V64}.
 Darüber lässt sich der Brechungsindex über
 \begin{equation}
   \label{eqn:n_luft}
   n = \frac{\lambda_{\text{vac}} M }{L} + 1
 \end{equation}
+\noindent berechnen.
 \newline \newline
 \noindent Das Lorentz-Lorenz-Gesetz
 \begin{equation}
@@ -109,5 +111,5 @@ Darüber lässt sich der Brechungsindex über
   \label{eqn:lorentz}
 \end{equation}
 gibt den Brechungsindex eines Gases in Anhängigkeit der Temperatur $T$,
-dem Druck $p$, dem molaren Brechungsindex $A$ 
+des Druckes $p$, des molaren Brechungsindex $A$ 
 und der allgemeinen Gaskonstante $R$ an.

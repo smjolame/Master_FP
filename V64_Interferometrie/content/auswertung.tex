@@ -41,12 +41,14 @@ Für die weiteren Messungen wird diese Filterposition beibehalten.
 \end{table}
 
 Wie in der Theorie gezeigt, kann aus Gleichung \eqref{eq:Kontrast} der Kontrast in Abhängigkeit des Drehwinkels dargestellt werden.
-Damit kann eine Ausgleichsrechnung mit der Funktion aus Gleichung \eqref{eqn:Kon} durchgeführt werden.
+Damit kann eine Ausgleichsrechnung mit der Funktion aus Gleichung \eqref{eqn:Kon} der Form 
 
 \begin{equation}
     \label{eqn:Kon}
     K(\phi) = A \lvert{\cos(\phi)\sin(\phi)}\rvert
 \end{equation}
+
+durchgeführt werden.
 
 Aus dieser Rechnung lässt sich der Fitparameter zu 
 \begin{equation}
@@ -92,9 +94,9 @@ Die Dicke der Glasplatten beträgt $L = \SI{1}{\milli\m}$.
     \end{tabular}
 \end{table}
 Im Mittel kann der Brechungsindex von Glas zu
-\begin{equation}
+\begin{equation*}
     n_\text{Glas} = \num{1.57466(03174)}
-\end{equation}
+\end{equation*}
 bestimmt werden.
 
 \subsection{Brechungsindex von Luft}
@@ -139,26 +141,32 @@ Die gemessenen Nulldurchgänge ($M_i$) und die über Gleichung \eqref{eqn:n_luft
     \end{tabular}
 \end{table}
 
-
-\begin{table}
-    \centering
-    \caption{Berechnete Brechungsindicies für Luft aus den jeweiligen Messdurchgängen.}
-    \label{tab:n_luft}
-    \sisetup{table-format = 1}
-    \begin{tabular}{S S[table-format = 1.8]}
-        \toprule
-        {\text{Messung}}  & {$n$}  \\
-
-        \midrule
-
-        1  & \num{1.00012901(00008027)} \\
-        2  & \num{1.00012931(00007936)} \\
-        3  & \num{1.00012871(00008022)} \\
-        \bottomrule
+Bei einem Atmosphärenduruck von $p = \SI{990}{\milli\bar}$ lässt sich im Mittel der Brechungsindex von Luft zu 
+\begin{equation*}
+    n_\text{Luft} = \num{1.000259}
+\end{equation*}
+bestimmen.
 
 
-    \end{tabular}
-\end{table}
+%\begin{table}
+%    \centering
+%    \caption{Berechnete Brechungsindicies für Luft aus den jeweiligen Messdurchgängen.}
+%    \label{tab:n_luft}
+%    \sisetup{table-format = 1}
+%    \begin{tabular}{S S[table-format = 1.8]}
+%        \toprule
+%        {\text{Messung}}  & {$n$}  \\
+%
+%        \midrule
+%
+%        1  & \num{1.00012901(00008027)} \\
+%        2  & \num{1.00012931(00007936)} \\
+%        3  & \num{1.00012871(00008022)} \\
+%        \bottomrule
+%
+%
+%    \end{tabular}
+%\end{table}
 
 
 \subsection{Lorentz-Lorenz-Gesetz}
@@ -168,7 +176,7 @@ Das in der Theorie \ref{sec:Theorie} beschriebene Lorentz-Lorenz-Gesetz setzt de
 
 
 \begin{equation}
-    n = \sqrt{1+ \frac{a\cdot p}{RT}} + b
+    n = \sqrt{b + \frac{a\cdot p}{RT}}
 \end{equation}
 
 durchführen.
@@ -184,15 +192,23 @@ Die Ergebnisse sind in Tabelle \ref{tab:lorentz} aufgeführt.
         \toprule
         {\text{Messung}} & {$a \mathbin{/} \si{\m^3\per\mol}$} & {$b$}  \\
         \midrule
-        1  & \num{1.299(007)} & \num{-3.7(9)e-06} \\
-        2  & \num{1.284(006)} & \num{-1.9(7)e-06} \\
-        3  & \num{1.298(007)} & \num{-3.9(9)e-06} \\
+        1  & \num{1.299(007)} & \num{0.9999925(0000018)} \\
+        2  & \num{1.284(006)} & \num{0.9999961(0000014)} \\
+        3  & \num{1.298(007)} & \num{0.9999921(0000018)} \\
         \bottomrule
 
     \end{tabular}
 \end{table}
 
+In Abbildung \ref{fig:lorentz} sind die Ergebnisse der drei Messreihen in einem Koordinatensystem aufgetragen. 
+Darüberhinaus sind die Kurvenverläufe der durchgeführten Ausgleichsrechnungen dargestellt.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\textwidth]{build/Gas.pdf}
+    \caption{Gemessene Anzahl an Nulldurchgängen $M_i$ in Abhängigkeit des herrschenden Druckes. Außerdem sind die aus den Ausgleichsrechnungen hervorgehenden Kurvenverläufe dargestellt.}
+    \label{fig:lorentz}
+\end{figure}
 
 
 

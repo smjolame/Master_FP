@@ -71,7 +71,7 @@ np.savetxt('build/n_Glas.txt',n_glas.T, fmt='%1.8f' , delimiter = '  &  ')
 n_glas_mean = np.mean(n_glas)
 n_glas_err = np.std(n_glas)
 n_glas_exp=np.array([n_glas_mean,n_glas_err])
-
+n_glas_u = ufloat(n_glas_mean,n_glas_err)
 np.savetxt('build/n_Glas_mean.txt',n_glas_exp, fmt='%1.8f' , delimiter = '  &  ')
 
 
@@ -101,30 +101,30 @@ n_luft1_n = unp.nominal_values(n_luft1)
 n_luft2_n = unp.nominal_values(n_luft2)
 n_luft3_n = unp.nominal_values(n_luft3)
 
-n_luft1_mean = np.mean(unp.nominal_values(n_luft1))
-n_luft2_mean = np.mean(unp.nominal_values(n_luft2))
-n_luft3_mean = np.mean(unp.nominal_values(n_luft3))
+#n_luft1_mean = np.mean(unp.nominal_values(n_luft1))
+#n_luft2_mean = np.mean(unp.nominal_values(n_luft2))
+#n_luft3_mean = np.mean(unp.nominal_values(n_luft3))
+#
+#
+#n_luft1_std = np.std(unp.nominal_values(n_luft1))
+#n_luft2_std = np.std(unp.nominal_values(n_luft2))
+#n_luft3_std = np.std(unp.nominal_values(n_luft3))
 
-
-n_luft1_std = np.std(unp.nominal_values(n_luft1))
-n_luft2_std = np.std(unp.nominal_values(n_luft2))
-n_luft3_std = np.std(unp.nominal_values(n_luft3))
-
-
-
-n_luft_mean = np.array([n_luft1_mean,n_luft1_std,n_luft2_mean,n_luft2_std,n_luft3_mean,n_luft3_std])
+n_luft = ufloat(np.mean([n_luft1_n[-1],n_luft2_n[-1],n_luft3_n[-1]]),np.std([n_luft1_n[-1],n_luft2_n[-1],n_luft3_n[-1]]))
+print('n_luft',n_luft)
+#n_luft_mean = np.array([n_luft1_mean,n_luft1_std,n_luft2_mean,n_luft2_std,n_luft3_mean,n_luft3_std])
 
 
 n_luft_Tabelle_n = np.array([n_luft1_n,n_luft2_n,n_luft3_n]).T
 
 # n Daten abspeichern
 np.savetxt('build/n_Luft.txt',n_luft_Tabelle_n,fmt='%1.8f', delimiter = '  &  ')
-np.savetxt('build/n_Luft_mean.txt',n_luft_mean.T,fmt='%1.8f', delimiter = '  &  ')
+#np.savetxt('build/n_Luft_mean.txt',n_luft_mean.T,fmt='%1.8f', delimiter = '  &  ')
 
 ####Gas
 R = const.R
 def n_func_gas(p_,a,b):
-    return np.sqrt(1 + a*p_/(R*T)) + b
+    return np.sqrt(b + a*p_/(R*T))
 
 
 ##### curvefits für Gas
@@ -164,6 +164,15 @@ plt.tight_layout()
 plt.grid()
 plt.savefig("build/Gas.pdf")
 
+
+#######abw
+
+nL = 1.000292
+nG = 1.45
+print(nL,n_luft)
+print(nG,n_glas_u)
+print(abw(nL-1,n_luft-1))
+print(abw(nG-1,n_glas_u-1))
 ##Curvefit
 #def BeispielFunktion(x,a,b):
 #    return a*x+b 
