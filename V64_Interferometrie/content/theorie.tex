@@ -86,8 +86,20 @@ wobei das Brechen winkelabhängig ist \cite{V64}:
 und $\Theta$ der Brechungswinkel ist.
 Mit Gl. \eqref{eq:AnzMax} ist der Brechungsindex:
 \begin{equation}
-  n = \left(1 - \frac{M \lambda_{\text{vac}}}{2 T \theta_0 \Delta\Phi}\right)^{-1} 
+  n = \left(1 - \frac{M \lambda_{\text{vac}}}{2 T \theta_0 \theta}\right)^{-1} 
   \label{eq:n_glas}
+\end{equation}
+
+
+In diesem Versuch wird mit zwei Glasplatten gearbeitet, die um $ \pm \Theta_0$ mit $\Theta_0 = \SI{10}{\degree}$ gegeneinander verschoben sind. Daher ergibt 
+sich für die Phasenverschiebung 
+\begin{equation*}
+    \delta(\Theta) = \frac{2 \pi}{\lambda_0} D \frac{n-1}{2n} \left[ (\Theta + \Theta_0)^2 - (\Theta - \Theta_0)^2 \right]. 
+\end{equation*}
+Mit $ M = \frac{\delta}{2 \pi} $ ergibt sich für den Brechungsindex:
+\begin{equation}
+    n(\Theta) = \frac{1}{1 - \frac{M \lambda_0}{2 D \Theta \Theta_0}}
+    \label{eqn:n_Glas}
 \end{equation}
 
 \subsubsection{Brechungsindex von Gasen}
