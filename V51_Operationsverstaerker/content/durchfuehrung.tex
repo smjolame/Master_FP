@@ -5,7 +5,7 @@ Im Rahmen des Versuches werden verschieden Schaltungen verwendet, in denen die a
 Alle auftretenen Schaltungen sind in der Theorie \ref{sec:Theorie} erläutert.
 Diese werden auf einer Steckplatine verschaltet.
 Ein Funktionsgenerator erzeugt die Einganssignale.
-Die Ein- und Ausgangssignale werden über ein Oszilloskop dargestellt und ausgewertet. 
+Die Ein- und Ausgangssignale werden über ein Oszilloskop dargestellt und in Form von Aufnahmen für die spätere Auswertung abgespeichert. 
 Der Operationsverstärker wird mit einer Versorgungsspannung von jeweils $U_B=\pm\SI{15}{\volt}$ versorgt.
 
 
@@ -20,9 +20,35 @@ Diese Messung wird für drei verschiedene Paare von Widerstandswerten wiederholt
 Bei gleichbleibenden Widerstand $R_1=\SI{1}{\kilo\ohm}$ werden für den zweiten Widerstand die Werte $R_{2,i}=\{\SI{100}{\kilo\ohm},\SI{150}{\kilo\ohm},\SI{47}{\kilo\ohm}\}$ verwendet.
 
 \subsection{Umkehr-Integrator}
+\label{sub:Um_Int}
 
 Die Schaltung wird zu einem Umkehr-Integrator (\ref{fig:Um_Int}) umgebaut. 
+Dabei wird ein Widerstand mit $R = \SI{10}{\kilo\ohm}$ und ein Kondensator mit $C=\SI{100}{\nano\farad}$ verwendet.
+Als Einganssignal wird wieder ein sinusförmiges Signal angelegt.
+Bei systematischer Änderung der Eingangsfrequenz wird in Abhängigkeit dieser die Ein- und Ausgangsspannung vermessen.
+Darüberhinaus werden Aufnahmen des Oszilloskop für sinusförmige, dreieckförmige und rechteckförmige Einganssignale angefertigt.
 
 
+
+\subsection{Invertierender Differenzierer}
+Als Nächstes wird die Schaltung eines invertierenden Differenzierers (\ref{fig:Inv_Dif}) aufgebaut.
+Dazu wird ein Widerstand mit $R=\SI{100}{\kilo\ohm}$ und ein Kondensator mit $C=\SI{22}{\nano\farad}$ eingefügt.
+Die Messungen und die Aufnahmen des Oszilloskop werden identisch zu dem Umkehr-Integrator im vorherigen Abschnitt \ref{sub:Um_Int} durchgeführt.
+
+
+\subsection{Nicht invertierender Schmitt-Trigger}
+Es wird die Schaltung eines nicht invertierenden Schmitt-Triggers gemäß Abbildung \ref{fig:Schmitt} verwendet.
+Die eingefügten Widerstandswerte werden zu $R_1=\SI{10}{\kilo\ohm}$ und $R_2=\SI{100}{\kilo\ohm}$ gewählt.
+Ein dreieckförmiges Signal wird als Einganssignal verwendet.
+Auf diese Weise lässt sich die Schaltereigenschaft der Schaltung untersuchen.
+Sobald das Einganssignal den Scheitelwert überschreitet, kippt die Ausgangsspannung.
+Zur Auswertung wird eine Aufnahme von dem Oszilloskop angefertigt, welches Ein- und Ausgangssignale anzeigt.
+
+
+\subsection{Signalgenerator}
+Der Schmitt-Trigger aus dem vorherigen Abschnitt wird mit der Schaltung eines invertierenden Integrators zu einem Signalgenerator gemäß Abbildung \ref{fig:Signal} erweitert.
+Die Bauteile haben Widerstands- und Kapazitätswerte von $R_1=\SI{10}{\kilo\ohm}$, $R_2=\SI{100}{\kilo\ohm}$, $R_3=\SI{1}{\kilo\ohm}$ und $C=\SI{1}{\micro\farad}$.
+Es wird die Frequenz und die Amplitude der sich spontan einstellenden Schwingung vermessen.
+Auch hier wird die Anzeige des Oszilloskops gespeichert und für die weitere Auswertung verwendet.
 
 %Was wurde gemessen bzw. welche Größen wurden variiert?
