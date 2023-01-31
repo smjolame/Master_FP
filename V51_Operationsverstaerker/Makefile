@@ -1,13 +1,21 @@
 all: build/main.pdf
  
 # hier Python-Skripte: 
-plots: FORCE | build
-	  MATPLOTLIBRC="$$(dirname "$$(pwd)")/default/matplotlibrc" \
-	  TEXINPUTS="$$(dirname "$$(pwd)")/default:" \
-	python plot.py
+#int100.pdf: FORCE | build
+#	  MATPLOTLIBRC="$$(dirname "$$(pwd)")/default/matplotlibrc" \
+#	  TEXINPUTS="$$(dirname "$$(pwd)")/default:" \
+#	python int.py
+#umint.pfg: FORCE | build
+#	  MATPLOTLIBRC="$$(dirname "$$(pwd)")/default/matplotlibrc" \
+#	  TEXINPUTS="$$(dirname "$$(pwd)")/default:" \
+#	python umint.py
+#dif.pdf: FORCE | build
+#	  MATPLOTLIBRC="$$(dirname "$$(pwd)")/default/matplotlibrc" \
+#	  TEXINPUTS="$$(dirname "$$(pwd)")/default:" \
+#	python dif.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: 
+build/main.pdf: #int100.pdf umint.pdf dif.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS=build: \

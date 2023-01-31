@@ -3,15 +3,139 @@
 
 \begin{table}
     \centering
-    \caption{bla}
-    \label{tab:bla}
     \sisetup{table-format = 1.2}
-    \begin{tabular}{S S S S}
+    \begin{tabular}{c c c  }
         \toprule
-
-        \midrule
-
-        \bottomrule
-
+        $f$ in $\qty{}{\hertz}$ & $U_A$ in $\qty{}{\V}$ & $\phi$ in $\qty{}{\degree} $\\
+        \midrule   
+        18&     13.10&  180 \\
+        60&     13.10&  180 \\
+        160&    13.10&  180 \\
+        250&    13.10&  177 \\
+        800&    13.10&  171 \\
+        1700&   13.10&  162 \\
+        2230&   13.10&  160 \\
+        10000&  8.40&   115 \\
+        19000&  4.30&   90  \\
+        46000&  1.09&   52  \\
+        150000& 0.34&   38  \\
+        200000& 0.24&   32  \\
+        \bottomrule 
     \end{tabular}
+    \caption{Die Frequenz $f$, die Ausgangsspannung $U_A$
+     und die Phasenverschiebung $\phi$ für den Linearverstärker mit $R_2=\qty{100}{\kilo\ohm}$.}
+    \label{tab:m1}
+\end{table}
+
+\begin{table}
+    \centering
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c c  }
+        \toprule
+        $f$ in $\qty{}{\hertz}$ & $U_A$ in $\qty{}{\V}$ & $\phi$ in $\qty{}{\degree} $\\
+        \midrule   
+        15&         19.70&     180  \\
+        60&         19.70&     180  \\
+        160&        19.70&     178  \\
+        247&        19.70&     178  \\
+        804&        19.70&     173  \\
+        1707&       19.00&     164  \\
+        2250&       18.50&     160  \\
+        4050&       16.30&     142  \\
+        6030&       13.70&     128  \\
+        8080&       11.30&     117  \\
+        10000&      9.40 &     110  \\
+        21100&      5.50 &     101  \\
+        46200&      2.70 &     92   \\
+        150100&     0.80 &     85   \\
+        200000&     0.60 &     82   \\
+        400000&     0.34 &     70   \\
+        1006000&    0.16 &     50   \\
+        \bottomrule 
+    \end{tabular}
+    \caption{Die Frequenz $f$, die Ausgangsspannung $U_A$
+     und die Phasenverschiebung $\phi$ für den Linearverstärker mit $R_2=\qty{150}{\kilo\ohm}$.}
+    \label{tab:m2}
+\end{table}
+
+\begin{table}
+    \centering
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c c  }
+        \toprule
+        $f$ in $\qty{}{\hertz}$ & $U_A$ in $\qty{}{\V}$ & $\phi$ in $\qty{}{\degree} $\\
+        \midrule   
+        15&         6.30&   180 \\
+        60&         6.30&   180 \\
+        160&        6.30&   180 \\
+        243&        6.30&   180 \\
+        810&        6.30&   179 \\
+        1700&       6.20&   175 \\
+        2330&       6.20&   172 \\
+        7100&       5.70&   151 \\
+        10000&      5.20&   140 \\
+        14000&      4.50&   127 \\
+        20700&      3.80&   115 \\
+        46100&      2.40&   105 \\
+        150800&     0.78&   89  \\
+        204000&     0.60&   85  \\
+        405000&     0.32&   73  \\
+        1006000&    0.16&   46  \\
+        \bottomrule     
+    \end{tabular}
+    \caption{Die Frequenz $f$, die Ausgangsspannung $U_A$
+     und die Phasenverschiebung $\phi$ für den Linearverstärker mit $R_2=\qty{47}{\kilo\ohm}$.}
+    \label{tab:m3}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\begin{table}
+    \centering
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c c  }
+        \toprule
+        $f$ in $\qty{}{\hertz}$ & $U_E$ in $\qty{}{\V}$ & $U_A$ in $\qty{}{\V}$ \\
+        \midrule   
+        20  &    3.4  &   21.3 \\
+        60  &    3.4  &   8.8 \\
+        100 &    3.4  &   5.8 \\
+        150 &    3.4  &   4.2 \\
+        205 &    13.1 &   9.8 \\
+        402 &    13.1 &   5.4 \\
+        550 &    13.2 &   4.2 \\
+        700 &    13.2 &   3.4 \\
+        890 &    13.2 &   3.0 \\
+        \bottomrule     
+    \end{tabular}
+    \caption{Die Frequenz $f$, die Eingangsspannung $U_E$ und die Ausgangsspannung $U_A$ für den 
+    Umkehr-Integrator.}
+    \label{tab:umint}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{table}
+    \centering
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c c  }
+        \toprule
+        $f$ in $\qty{}{\hertz}$ & $U_E$ in $\qty{}{\V}$ & $U_A$ in $\qty{}{\V}$ \\
+        \midrule   
+        100 &    2.89 &   3.22  \\
+        150 &    2.89 &   4.66  \\
+        201 &    2.89 &   6.31  \\
+        268 &    2.89 &   8.80  \\
+        300 &    2.89 &   9.60  \\
+        349 &    2.89 &   11.50 \\
+        400 &    2.89 &   13.10 \\
+        448 &    2.89 &   14.70 \\
+        550 &    2.89 &   17.90 \\
+        650 &    2.89 &   20.70 \\
+        752 &    2.89 &   25.50 \\
+        847 &    2.89 &   28.30 \\
+        \bottomrule     
+    \end{tabular}
+    \caption{Die Frequenz $f$, die Eingangsspannung $U_E$ und die Ausgangsspannung $U_A$ für den 
+    invertierenden Differenzierer.}
+    \label{tab:dif}
 \end{table}

@@ -1,7 +1,80 @@
 \section{Diskussion}
 \label{sec:Diskussion}
 
-%Kurze Zusammenfassung der Ergebnisse
-%-Vergleich mit Literaturwerten
-%-Vergleich mit verschiedenen Messverfahren
-%-bei Abweichungen mögliche Ursachen finden
+\subsection*{Invertierender-Linearverstärker}
+Zur Untersuchung des invertierenden Linearverstärkers 
+werden die Ausgangsspannung und die Phase zwisschen Ein- und Ausgang in Abhängigkeit der Frequenz gemessen.
+Die Verstärkung wird doppeltlogarithmisch gegen die Frequnz geplottet (siehe Abbildung \ref{fig:int100}).
+Es ist erkennbar, dass diese konstant für einen kleinen Frequenzbrecih ist
+und ab einer Frequenz mit steigender Frequent abnimmt.
+Durch einen Fit durch das Plateau lässt sich die Leerlaufverstärkung bestimmen.
+Werden die Ergebnisse des Fits und dem Theoriewert aus der Tabelle \ref{tab:Leerlaufverstarkung}
+ist eine relative Abweichungen von
+
+
+\begin{table}
+    \centering
+    \sisetup{table-format = 1.2}
+    \begin{tabular}{c c }
+        \toprule
+        $R_2$ in $\qty{}{\kilo\ohm}$ & $\Delta V_0 = 1 - \frac{V_0}{V_\text{0,ideal}}$ \\
+        \midrule   
+        100 &   0.05755395683453235 \pm 0.00000000000000004     \\
+        150 &   0.061 \pm 0.006     \\
+        47  &   0.038 \pm 0.0026        \\
+        \bottomrule   
+    \end{tabular}
+\end{table}
+festzustellen.
+Ein möglicher Grund für diese Abweichung ist, 
+dass die verwendeten Wiederstände nicht genau ihrem angegeben entsprechen.
+\newline \newline
+\noindent Dass die Verstärkung mit steigender Frequenz abnimmt,
+entspricht dem erwartenden Verlauf,
+da hier nicht von einem idealen Operationsverstärker ausgegangen wird.
+\newline \newline
+\noindent In der Abbildung \ref{fig:int100f} ist erkennbar,
+dass die Phasenverschiebung in einem Frequenzbrecih konstant bei 180 ist, 
+jedoch auch mit steigender Frequenz abfällt.
+Auch dieses Verhalten lässt sich dadurch erklären, 
+dass der verwendete Operationsverstärker nicht ideal ist, 
+also eine frequenzabhängig aufweist.
+
+\subsection{Umkehr-Integrator}
+Die Verstärkung des Umkehr-Integrator wird frequenzabhängig aufgenommen 
+und doppeltlogarithmisch geplottet (siehe Abbildung \ref{fig:umint}).
+In der doppeltlogarithmisch Darstellung ist ein linearer Verlauf zu sehen.
+Dies stimmt mit den theoretischen Erwartungen überein.
+\newline \newline
+
+Weiterhin ist zu erkennen (siehe Abbildung \ref{fig:int_os}), 
+dass der Integrator das Eingangssignal erfolgreich integriert.
+Aus einer Sinusspannung wird eine Cosinusspannung 
+und aus einer Rechteckspannung eine Dreieckspannung.
+
+\subsection{Invertierender Differenzierer}
+Auch bei dem invertierenden Differenzierers ist in der doppeltlogarithmischen
+Darstellung ein linearer Verlauf zu erkennen (siehe Abbildung \ref{fig:dif})
+\newline \newline
+\noindent Aus das Eingangssignal wird erfolgreich differenziert.
+Das Sinussignal wird zum Cosinus, 
+das Rechtecksignal zu Delta-Peaks und die Dreieckspannung zu einer Rechteckspannung.
+
+\subsection{Nicht invertierender Schmitt-Trigger}
+Der nicht invertierenden Schmitt-Triggers macht aus einem Dreiecksignal ein Rechtecksignal
+(siehe Abbildung \ref{fig:schmitt}).
+ Die dabei ermittelte Kippspannung 
+$U_K = \qty{-1.37}{\V}$ weicht von der berechneten Kippspannung $U_\text{K,theo} = \qty{-1.448}{\V}$
+um 5,4\% ab. 
+Die experiementell bestimmten Kippspannung stimmt mit der Theorie weitesgehend übereien.
+
+\subsection{Signalgenerator}
+Der Signalgenerator generiert die Dreieckspannung $U_A$ und 
+die Rechteckspannung $U_1$.
+Dieses Verhalten kann in der Abbildung \ref{fig:sig} beobachtet werden.
+Die Frequenz und die Amplitude der Dreieckspannung wird bestimmt und theoretisch berechnet
+(siehe Tabelle \ref{tab:sig}).
+Es werden Abweichungen von $\Delta f = 0,32$ und $\Delta A = -1$.
+Mögliche Gründe dafür sind,
+dass die Material Eigenschaftschen nicht genau angegeben sind
+oder dass das Signalrauschen die ermmitelten Werte verschlechtern.
