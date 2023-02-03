@@ -140,7 +140,8 @@ Zu beachten ist, dass im Gegensatz zu den vorherigen Schaltungen, der Gegenkoppl
 Dieses Verhalten ist in Abbildung \ref{fig:Kenn_Schmitt} als Kennlinie verdeutlicht.
 Der theoretisch zu erwartene Wert für die Schwellenspannung lässt sich über
 \begin{equation}
-    U_{E \: \text{ab}} = \frac{R_1}{R_1+R_2} U_{A\text{max}}
+    U_{E \: \text{ab}} = \frac{R_1}{R_2} U_{A\text{max}}
+    \label{eq:schmitt}
 \end{equation}
 bestimmen.
 $U_{A \: \text{max}}$ beschreibt den Maximalwert der Ausgangsspannung.
@@ -170,10 +171,12 @@ So hat das Ausgangssignal dieser selbstinduzierenden Schwingung die Form einer D
 Die theoretische Frequenz und Amplitude dieses Signals lassen sich über
 \begin{equation}
     f = \frac{R_2}{4CR_1R_2}
+    \label{eq:sig_f}
 \end{equation}
 und 
 \begin{equation}
     A = \frac{R_1}{R_2}\cdot U_{A \: \text{max}}
+    \label{eq:sig_a}
 \end{equation}
 berechnen.
 
