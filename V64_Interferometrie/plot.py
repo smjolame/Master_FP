@@ -152,10 +152,10 @@ plt.plot(p,unp.nominal_values(n_luft1), 'x', label = 'Messwerte 1', c = 'b')
 plt.plot(p_lin,n_func_gas(p_lin,a_gas1.n,b_gas1.n), label = 'Fit 1', c = 'b')
 
 plt.plot(p,unp.nominal_values(n_luft2), 'x', label = 'Messwerte 2',c = 'r')
-plt.plot(p_lin,n_func_gas(p_lin,a_gas2.n,b_gas2.n), label = 'Fit 2', c = 'r')
+plt.plot(p_lin,n_func_gas(p_lin,a_gas2.n,b_gas2.n), label = 'Fit 2', c = 'r', ls=':')
 
 plt.plot(p,unp.nominal_values(n_luft3), 'x', label = 'Messwerte 3',c = 'k')
-plt.plot(p_lin,n_func_gas(p_lin,a_gas3.n,b_gas3.n), label = 'Fit 3',c = 'k')
+plt.plot(p_lin,n_func_gas(p_lin,a_gas3.n,b_gas3.n), label = 'Fit 3',c = 'k',ls='--')
 
 plt.xlabel(r'$p \mathbin{/} \si{\milli\bar}$')
 plt.ylabel(r'$n$')
@@ -165,6 +165,19 @@ plt.grid()
 plt.savefig("build/Gas.pdf")
 
 
+#####Brechungsindex Luft aus fits
+
+T = 15+273.15
+def n_func_gas_unp(p_,a,b):
+    return unp.sqrt(b + a*p_/(R*T))
+p_atmo = 1013
+
+n_gas_fit_a =np.array([a_gas1,a_gas2,a_gas3]) 
+n_gas_fit_b =np.array([b_gas1,b_gas2,b_gas3]) 
+n = n_func_gas_unp(p_atmo,n_gas_fit_a,n_gas_fit_b)
+print(n)
+print("n",np.mean(noms(n)))
+print("n",np.std(noms(n)))
 #######abw
 
 nL = 1.000292
@@ -173,6 +186,7 @@ print(nL,n_luft)
 print(nG,n_glas_u)
 print(abw(nL-1,n_luft-1))
 print(abw(nG-1,n_glas_u-1))
+print(abw(nL-1,np.mean(noms(n))-1))
 ##Curvefit
 #def BeispielFunktion(x,a,b):
 #    return a*x+b 

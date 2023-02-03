@@ -143,7 +143,7 @@ Die gemessenen Nulldurchgänge ($M_i$) und die über Gleichung \eqref{eqn:n_luft
 
 Bei einem Atmosphärenduruck von $p = \SI{990}{\milli\bar}$ lässt sich im Mittel der Brechungsindex von Luft zu 
 \begin{equation*}
-    n_\text{Luft} = \num{1.000259}
+    n_\text{Luft} = \num{1.00025953}
 \end{equation*}
 bestimmen.
 
@@ -182,19 +182,25 @@ Das in der Theorie \ref{sec:Theorie} beschriebene Lorentz-Lorenz-Gesetz setzt de
 durchführen.
 Dazu wird die Temperatur zu $T = \SI{20.7}{\celsius}$ bestimmt. 
 Die Ergebnisse sind in Tabelle \ref{tab:lorentz} aufgeführt.
+Aus den Fits lässt sich der Brechungsindex von Luft bei Normatmosphäre von $p=\SI{1013}{\milli\bar}$ und $T=\SI{15}{\celsius}$ bestimmen. 
+Dieser ist ebenfalls in Tabelle \ref{tab:lorentz} einzusehen und ergibt sich gemittelt zu
+
+\begin{equation}
+    n_\text{Luft} = \num{1.00027021(000000053)}.
+\end{equation}
 
 \begin{table}
     \centering
     \caption{Fitparameter der Ausgleichsrechnung für die Brechungsindicies nach dem Lorentz-Lorenz-Gesetz.}
     \label{tab:lorentz}
     \sisetup{table-format = 1}
-    \begin{tabular}{S S S[table-format = 1.8]}
+    \begin{tabular}{S S S[table-format = 1.8] S }
         \toprule
-        {\text{Messung}} & {$a \mathbin{/} \si{\m^3\per\mol}$} & {$b$}  \\
+        {\text{Messung}} & {$a \mathbin{/} \si{\m^3\per\mol}$} & {$b$} & {$n_\text{Luft}$} \\
         \midrule
-        1  & \num{1.299(007)} & \num{0.9999925(0000018)} \\
-        2  & \num{1.284(006)} & \num{0.9999961(0000014)} \\
-        3  & \num{1.298(007)} & \num{0.9999921(0000018)} \\
+        1  & \num{1.299(007)} & \num{0.9999925(0000018)} & \num{1.00027077(000000180)}\\
+        2  & \num{1.284(006)} & \num{0.9999961(0000014)} & \num{1.00026948(000000147)}\\
+        3  & \num{1.298(007)} & \num{0.9999921(0000018)} & \num{1.00027038(000000178)}\\
         \bottomrule
 
     \end{tabular}
